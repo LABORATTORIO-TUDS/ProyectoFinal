@@ -19,6 +19,7 @@
 # NetBeans (conservar nbproject excepto la configuración privada)
 nbproject/private/
 /nbproject/private/*
+/nbproject/private/** */
 # Mantener nbproject/project.xml en el repositorio (no ignorarlo)
 # Si usas nb-gradle/módulos, añade patrones específicos según sea necesario
 
