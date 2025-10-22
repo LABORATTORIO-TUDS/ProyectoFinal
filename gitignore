@@ -1,0 +1,84 @@
+# .gitignore para proyecto Java creado con NetBeans 25
+
+# Carpetas de build y artefactos
+/build/
+/dist/
+/target/
+/nbbuild/
+/build-classes/
+/generated/
+
+# Archivos compilados y binarios
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+
+# NetBeans (conservar nbproject excepto la configuración privada)
+nbproject/private/
+/nbproject/private/*
+# Mantener nbproject/project.xml en el repositorio (no ignorarlo)
+# Si usas nb-gradle/módulos, añade patrones específicos según sea necesario
+
+# Maven
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.target/
+.mvn/wrapper/maven-wrapper.jar
+/target/
+
+# Gradle
+.gradle/
+/build/
+/gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+gradle-wrapper.properties
+
+# IDEs
+/.idea/
+/*.iml
+/*.ipr
+/*.iws
+.classpath
+.project
+.settings/
+
+# JetBrains Rider/Other
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Editores / temporales
+*~ 
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Logs y reportes
+*.log
+hs_err_pid*
+
+# Certificados y datos sensibles (añadir según necesidad)
+*.keystore
+*.jks
+
+# Archivos de distribución locales
+dist/
+
+# Guardar archivos de bloqueo de dependencias si no se desea en repo
+# (descomentar si quieres ignorarlos)
+# package-lock.json
+# yarn.lock
+
+# Fin
