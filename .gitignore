@@ -10,7 +10,6 @@
 
 # Archivos compilados y binarios
 *.class
-*.jar
 *.war
 *.ear
 *.nar
