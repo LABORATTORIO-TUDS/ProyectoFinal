@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2025 a las 01:08:19
+-- Tiempo de generación: 23-10-2025 a las 01:09:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gp13_cinemacentro`
 --
+CREATE DATABASE IF NOT EXISTS `gp13_cinemacentro` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gp13_cinemacentro`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asiento`
 --
 
+DROP TABLE IF EXISTS `asiento`;
 CREATE TABLE `asiento` (
   `codAsiento` int(11) NOT NULL,
   `fila` varchar(1) NOT NULL,
@@ -41,6 +44,7 @@ CREATE TABLE `asiento` (
 -- Estructura de tabla para la tabla `comprador`
 --
 
+DROP TABLE IF EXISTS `comprador`;
 CREATE TABLE `comprador` (
   `dni` int(8) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -54,6 +58,7 @@ CREATE TABLE `comprador` (
 -- Estructura de tabla para la tabla `detalleticket`
 --
 
+DROP TABLE IF EXISTS `detalleticket`;
 CREATE TABLE `detalleticket` (
   `codAsiento` int(11) NOT NULL,
   `subtotal` double NOT NULL,
@@ -66,6 +71,7 @@ CREATE TABLE `detalleticket` (
 -- Estructura de tabla para la tabla `pelicula`
 --
 
+DROP TABLE IF EXISTS `pelicula`;
 CREATE TABLE `pelicula` (
   `titulo` varchar(25) NOT NULL,
   `director` varchar(25) NOT NULL,
@@ -81,6 +87,7 @@ CREATE TABLE `pelicula` (
 -- Estructura de tabla para la tabla `proyeccion`
 --
 
+DROP TABLE IF EXISTS `proyeccion`;
 CREATE TABLE `proyeccion` (
   `codProyeccion` int(11) NOT NULL,
   `idioma` varchar(25) NOT NULL,
@@ -100,6 +107,7 @@ CREATE TABLE `proyeccion` (
 -- Estructura de tabla para la tabla `salas`
 --
 
+DROP TABLE IF EXISTS `salas`;
 CREATE TABLE `salas` (
   `nroSala` int(10) UNSIGNED NOT NULL,
   `apta3D` tinyint(1) NOT NULL,
@@ -120,6 +128,7 @@ INSERT INTO `salas` (`nroSala`, `apta3D`, `capacidad`, `estado`) VALUES
 -- Estructura de tabla para la tabla `ticketcompra`
 --
 
+DROP TABLE IF EXISTS `ticketcompra`;
 CREATE TABLE `ticketcompra` (
   `codTicket` int(11) NOT NULL,
   `fechaCompra` date NOT NULL,
