@@ -9,5 +9,8 @@ package Modelo;
  * @author elias
  */
 public class DetalleTicket {
+    private int codAsiento;
+    private double subtotal;
+    private int codTicket;
     
 }

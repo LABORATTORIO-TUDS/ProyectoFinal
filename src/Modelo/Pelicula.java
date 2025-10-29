@@ -4,10 +4,18 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author elias
  */
 public class Pelicula {
+    private String titulo;
+    private String director;
+    private String origen;
+    private String genero;
+    private Date estreno;
+    private boolean enCartelera;
     
 }

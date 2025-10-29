@@ -4,10 +4,16 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author elias
  */
 public class Comprador {
+    private int dni;
+    private String nombre;
+    private Date fechaNac;
+    private String password;
     
 }

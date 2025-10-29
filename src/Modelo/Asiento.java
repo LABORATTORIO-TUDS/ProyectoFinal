@@ -9,5 +9,11 @@ package Modelo;
  * @author elias
  */
 public class Asiento {
+    private int codAsiento;
+    private String fila;
+    private int numero;
+    private int codProyeccion;
+    
+    
     
 }
