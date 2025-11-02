@@ -4,10 +4,167 @@
  */
 package Persistencia;
 
+import Modelo.Proyeccion;
+import Modelo.Conexion;
+import java.sql.*;
+import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author elias
  */
 public class ProyeccionData {
+    
+    private Connection con = null;
+    
+    public ProyeccionData(){
+        this.con = Conexion.conectar();
+    }
+    
+    //Que onda gatos aca hacemos la alta:
+    public void crearProyeccion(Proyeccion p){
+       String sql = "INSERT into proyeccion (idioma, es3D, subtitulada, horaInicio, horaFin, precio, titulo, director, nroSala) VALUES (?,?,?,?,?,?,?,?,?)"; 
+       
+       try {
+           PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+           ps.setString(1, p.getIdioma());
+           ps.setBoolean(2, p.isEs3D());
+           ps.setBoolean(3, p.isSubtitulada());
+           ps.setTime(4, Time.valueOf(p.getHoraInicio()));
+           ps.setTime(5, Time.valueOf(p.getHoraFin()));
+           ps.setDouble(6, p.getPrecio());
+           ps.setString(7, p.getTitulo());
+           ps.setString(8, p.getDirector());
+           ps.setInt(9, p.getNroSala());
+           
+           ps.executeUpdate();
+           
+          ResultSet rs = ps.getGeneratedKeys();
+          if(rs.next()){
+              p.setCodProyeccion(rs.getInt(1));
+              JOptionPane.showMessageDialog(null, "Proyeccion guardada correctamente.");
+          }
+          
+          ps.close();
+       }catch(SQLException ex){
+           JOptionPane.showMessageDialog(null, "Error al crear proyeccion: " + ex.getMessage());
+       }
+    }
+    
+    public Proyeccion buscarProyeccion(int codProyeccion){
+        Proyeccion proy = null;
+        String sql = "SELECT * FROM proyeccion WHERE codProyeccion = ?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codProyeccion);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                proy = new Proyeccion();
+                proy.setCodProyeccion(rs.getInt("codProyeccion"));
+                proy.setIdioma(rs.getString("idioma"));
+                proy.setEs3D(rs.getBoolean("es3D"));
+                proy.setSubtitulada(rs.getBoolean("subtitulada"));
+                proy.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+                proy.setHoraFin(rs.getTime("horaFin").toLocalTime());
+                proy.setPrecio(rs.getDouble("precio"));
+                proy.setTitulo(rs.getString("titulo"));
+                proy.setDirector(rs.getString("director"));
+                proy.setNroSala(rs.getInt("nroSala"));
+                
+            }
+            ps.close();
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al buscar una proyeccion: " +  ex.getMessage());
+        }
+        
+        return proy;
+    }
+    
+    //Metodo para modificar una proyeccionitis
+    public void modificarProyeccion(Proyeccion proy){
+        String sql = "UPDATE proyeccion SET idioma = ?, es3D = ?,"
+                     + " subtitulada = ?, horaInicio = ?, horaFin = ?,"
+                     + " precio = ?, titulo = ?, director = ?, nroSala = ? WHERE codProyeccion = ?";   
+         try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, proy.getIdioma());
+            ps.setBoolean(2, proy.isEs3D());
+            ps.setBoolean(3, proy.isSubtitulada());
+            ps.setTime(4, Time.valueOf(proy.getHoraInicio()));
+            ps.setTime(5, Time.valueOf(proy.getHoraFin()));
+            ps.setDouble(6, proy.getPrecio());
+            ps.setString(7, proy.getTitulo());
+            ps.setString(8, proy.getDirector());
+            ps.setInt(9, proy.getNroSala());
+            ps.setInt(10, proy.getCodProyeccion());
+            
+            int exito = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Proyeccion modificada exitosamente.");
+            }else {
+                JOptionPane.showMessageDialog(null, "Proyeccion a modificar no encontrada.");
+            }
+            
+            ps.close();
+         } catch(SQLException ex){
+             JOptionPane.showMessageDialog(null, "No se ha podido modificar la proyeccion: " + ex.getMessage());       
+         }         
+    }
+    
+    //listar todas las proecciones
+    public List<Proyeccion> listaProyecciones() {
+      List<Proyeccion> proyecciones = new ArrayList<>();
+      String sql = "SELECT * FROM proyeccion";
+      try{
+          PreparedStatement ps = con.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          
+          while(rs.next()){
+              Proyeccion proy = new Proyeccion();
+              proy.setCodProyeccion(rs.getInt("codProyeccion"));
+              proy.setIdioma(rs.getString("idioma"));
+              proy.setEs3D(rs.getBoolean("es3D"));
+              proy.setSubtitulada(rs.getBoolean("subtitulada"));
+              proy.setHoraInicio(rs.getTime("horaInicio").toLocalTime());
+              proy.setHoraFin(rs.getTime("horaFin").toLocalTime());
+              proy.setPrecio(rs.getDouble("precio"));
+              proy.setTitulo(rs.getString("titulo"));
+              proy.setDirector(rs.getString("director"));
+              proy.setNroSala(rs.getInt("nroSala"));
+              
+              proyecciones.add(proy);
+          }
+          
+          ps.close();
+      }catch(SQLException ex){
+          JOptionPane.showMessageDialog(null, "Error al listar las proyecciones: " + ex.getMessage());
+      }
+      
+      return proyecciones;
+    }
+    
+    
+    //Mteodo para eliminar 
+    public void bajarProyeccion(Proyeccion p){
+        String sql = "DELETE FROM proyeccion WHERE codProyeccion = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, p.getCodProyeccion());
+            
+            int exito = ps.executeUpdate();
+            if (exito == 1){
+                JOptionPane.showMessageDialog(null, "Proyeccion dada de baja correctamente.");
+            }else {
+                JOptionPane.showMessageDialog(null, "No se encontro la proyeccion.");
+            }
+            
+            ps.close();
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se pudo dar de baja la proyeccion: " + ex.getMessage());
+        }
+        
+    } 
     
 }
