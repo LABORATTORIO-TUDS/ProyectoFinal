@@ -42,10 +42,10 @@ public class PeliculaData {
 
         } catch (SQLException e) {
             if (e.getErrorCode() == 1062) {
-                JOptionPane.showMessageDialog(null, "Error: La película '" + pelicula.getTitulo() + 
+                JOptionPane.showMessageDialog(null, "Error: La pelicula '" + pelicula.getTitulo() + 
                                    "' del director '" + pelicula.getDirector() + "' ya existe.");
             } else {
-                JOptionPane.showMessageDialog(null,"Error al guardar la película: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al guardar la pelicula: " + e.getMessage());
             }
         }
     }
@@ -72,13 +72,13 @@ public class PeliculaData {
             int filasAfectadas = ps.executeUpdate();
 
             if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null,"Película '" + pelicula.getTitulo() + "' modificada exitosamente.");
+                JOptionPane.showMessageDialog(null,"Pelicula '" + pelicula.getTitulo() + "' modificada exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null,"No se encontró la película para modificar.");
+                JOptionPane.showMessageDialog(null,"No se encontro la pelicula para modificar.");
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Error al modificar la película: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al modificar la pelicula: " + e.getMessage());
         }
     }
 
@@ -94,13 +94,13 @@ public class PeliculaData {
             int filasAfectadas = ps.executeUpdate();
 
             if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null,"Película '" + titulo + "' eliminada.");
+                JOptionPane.showMessageDialog(null,"Pelicula '" + titulo + "' eliminada.");
             } else {
-               JOptionPane.showMessageDialog(null,"No se encontró ninguna película con ese título y director.");
+               JOptionPane.showMessageDialog(null,"No se encontro ninguna película con ese titulo y director.");
             }
 
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"Error al eliminar la película: " + e.getMessage());
+           JOptionPane.showMessageDialog(null,"Error al eliminar la pelicula: " + e.getMessage());
         }
     }
 
@@ -125,12 +125,12 @@ public class PeliculaData {
                     pelicula.setEstreno(rs.getDate("estreno"));
                     pelicula.setEnCartelera(rs.getBoolean("enCartelera"));
                 } else {
-                    JOptionPane.showMessageDialog(null,"No se encontró la película.");
+                    JOptionPane.showMessageDialog(null,"No se encontro la pelicula.");
                 }
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Error al buscar la película: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al buscar la pelicula: " + e.getMessage());
         }
         return pelicula;
     }
@@ -157,7 +157,7 @@ public class PeliculaData {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Error al listar las películas: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al listar las peliculas: " + e.getMessage());
         }
         return peliculas;
     }
@@ -183,7 +183,7 @@ public class PeliculaData {
             }
 
         } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al listar películas en cartelera: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error al listar peliculas en cartelera: " + e.getMessage());
         }
         return peliculas;
     }

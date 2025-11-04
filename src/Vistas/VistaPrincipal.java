@@ -43,6 +43,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jPSideBar.setBackground(new java.awt.Color(90, 46, 46));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Peliculas");
 
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
@@ -74,6 +76,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLCinemacenter.setFont(new java.awt.Font("MingLiU_MSCS-ExtB", 1, 36)); // NOI18N
+        jLCinemacenter.setForeground(new java.awt.Color(255, 255, 255));
         jLCinemacenter.setText("CINEMACENTER");
         jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, -1));
 
