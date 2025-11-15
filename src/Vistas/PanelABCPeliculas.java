@@ -4,6 +4,11 @@
  */
 package Vistas;
 
+import Modelo.Pelicula;
+import Persistencia.PeliculaData;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author elias
@@ -27,24 +32,95 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblDirector = new javax.swing.JLabel();
+        lblOrigen = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
+        jtfTitulo = new javax.swing.JTextField();
+        jtfDirector = new javax.swing.JTextField();
+        jtfOrigen = new javax.swing.JTextField();
+        jtfGenero = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jdcEstreno = new com.toedter.calendar.JDateChooser();
+        lblFechaEstreno = new javax.swing.JLabel();
+        lblEnCartelra = new javax.swing.JLabel();
+        jcbEnCartelera = new javax.swing.JCheckBox();
+        btnBuscar = new javax.swing.JButton();
 
-        jLabel8.setText("jLabel8");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitle.setText("Panel Admin");
 
-        jLabel9.setText("jLabel9");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitulo.setText("Titulo:");
 
-        jLabel10.setText("jLabel10");
+        lblDirector.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDirector.setText("Director:");
 
-        jLabel11.setText("jLabel11");
+        lblOrigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblOrigen.setText("Origen:");
 
-        jLabel12.setText("jLabel12");
+        lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGenero.setText("Genero:");
 
-        jTextField5.setText("jTextField5");
+        jtfTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfTituloActionPerformed(evt);
+            }
+        });
+
+        jtfOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfOrigenActionPerformed(evt);
+            }
+        });
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        lblFechaEstreno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaEstreno.setText("Fecha Estr.:");
+
+        lblEnCartelra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEnCartelra.setText("En Cartelera:");
+
+        jcbEnCartelera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbEnCartelera.setText("Si");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -52,39 +128,80 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(163, 163, 163)
-                            .addComponent(jLabel8)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))))
-                .addContainerGap(200, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addComponent(lblTitle))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblOrigen)
+                                    .addComponent(lblGenero)
+                                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFechaEstreno)
+                                    .addComponent(lblEnCartelra))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jcbEnCartelera)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBuscar))
+                                    .addComponent(jtfDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jdcEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addGap(27, 27, 27)
+                .addComponent(lblTitle)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDirector))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblOrigen)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jtfOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGenero))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel12)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdcEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaEstreno))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEnCartelra)
+                    .addComponent(jcbEnCartelera)
+                    .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -99,14 +216,140 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtfTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfTituloActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        try {
+            String titulo = jtfTitulo.getText();
+            String Director = jtfDirector.getText();
+            String Origen = jtfOrigen.getText();
+            String Genero = jtfGenero.getText();
+            Date Estreno = jdcEstreno.getDate();
+            Boolean enCartelera = jcbEnCartelera.isSelected();
+            if (titulo.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo de Titulo no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (Director.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo de Director no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (Origen.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo de Origen no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (Genero.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo de Genero no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            Pelicula pelicula = new Pelicula(titulo, Director, Origen, Genero, Estreno, enCartelera);
+            PeliculaData peliData = new PeliculaData();
+            peliData.agregarPelicula(pelicula);
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error al guardar la Pelicula", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        jtfTitulo.setText("");
+        jcbEnCartelera.setSelected(false);
+        jtfDirector.setText("");
+        jtfGenero.setText("");
+        jtfOrigen.setText("");
+        jdcEstreno.setDate(null);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void jtfOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfOrigenActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        String titulo = jtfTitulo.getText();
+        String director = jtfDirector.getText();
+        PeliculaData peliculaData = new PeliculaData();
+
+    
+        if (titulo.isEmpty() || director.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el Título y el Director para buscar.");
+            return;
+        }
+
+        try {
+        
+            Pelicula peliculaEncontrada = peliculaData.buscarPelicula(titulo, director);
+
+        
+            if (peliculaEncontrada != null) {
+            
+            
+            jtfOrigen.setText(peliculaEncontrada.getOrigen());
+            jtfGenero.setText(peliculaEncontrada.getGenero());
+
+            
+            if (peliculaEncontrada.getEstreno() != null) {
+               
+               jdcEstreno.setDate(peliculaEncontrada.getEstreno());
+            }
+
+            
+            jcbEnCartelera.setSelected(peliculaEncontrada.isEnCartelera());
+
+            
+            btnModificar.setEnabled(true);
+            btnBorrar.setEnabled(true);
+            btnGuardar.setEnabled(false); 
+            
+            
+            jtfTitulo.setEditable(false);
+            jtfDirector.setEditable(false);
+
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Película no encontrada.");
+            
+        }
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al buscar la película: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JCheckBox jcbEnCartelera;
+    private com.toedter.calendar.JDateChooser jdcEstreno;
+    private javax.swing.JTextField jtfDirector;
+    private javax.swing.JTextField jtfGenero;
+    private javax.swing.JTextField jtfOrigen;
+    private javax.swing.JTextField jtfTitulo;
+    private javax.swing.JLabel lblDirector;
+    private javax.swing.JLabel lblEnCartelra;
+    private javax.swing.JLabel lblFechaEstreno;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblOrigen;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
