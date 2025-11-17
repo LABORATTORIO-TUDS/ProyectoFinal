@@ -322,8 +322,6 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
         peliculaData.modificarPelicula(peliculaModificada);
 
        
-        JOptionPane.showMessageDialog(this, "¡Pelicula modificada exitosamente!");
-        
 
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(this, "Error al modificar la pelicula: " + ex.getMessage());

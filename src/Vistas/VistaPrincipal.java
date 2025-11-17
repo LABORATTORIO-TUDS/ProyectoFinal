@@ -171,6 +171,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        try {
+        com.formdev.flatlaf.FlatDarculaLaf.setup();
+    } catch( Exception ex ) {
+        System.err.println( "Falló al inicializar FlatLaf" );
+    }
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new VistaPrincipal().setVisible(true));
