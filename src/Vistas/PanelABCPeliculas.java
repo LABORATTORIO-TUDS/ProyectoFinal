@@ -14,13 +14,35 @@ import javax.swing.JOptionPane;
  * @author elias
  */
 public class PanelABCPeliculas extends javax.swing.JPanel {
-
+ 
     /**
      * Creates new form PanelABCMPeliculas
      */
     public PanelABCPeliculas() {
         initComponents();
     }
+    private void limpiarCamposYResetFormulario() {
+    
+    jtfTitulo.setText("");
+    jtfDirector.setText("");
+    jtfOrigen.setText("");
+    jtfGenero.setText("");
+
+    
+    jdcEstreno.setDate(null);
+
+   
+    jcbEnCartelera.setSelected(false);
+
+    
+    jtfDirector.setEditable(true);
+    jtfTitulo.setEditable(true);
+
+    
+    btnGuardar.setEnabled(true);   
+    btnModificar.setEnabled(false); 
+    btnBorrar.setEnabled(false);    
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,12 +279,7 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
-        jtfTitulo.setText("");
-        jcbEnCartelera.setSelected(false);
-        jtfDirector.setText("");
-        jtfGenero.setText("");
-        jtfOrigen.setText("");
-        jdcEstreno.setDate(null);
+        limpiarCamposYResetFormulario();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void jtfOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfOrigenActionPerformed
@@ -271,6 +288,46 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        try {
+        String titulo = jtfTitulo.getText();
+        String director = jtfDirector.getText();
+        
+        PeliculaData peliculaData = new PeliculaData();
+
+        if (titulo.isEmpty() || director.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error: Titulo o Director estan vacios. Busque una pelicula primero.");
+            return;
+        }
+
+        
+        String origen = jtfOrigen.getText();
+        String genero = jtfGenero.getText();
+        
+        
+        java.util.Date estreno = jdcEstreno.getDate();
+        
+       
+        boolean enCartelera = jcbEnCartelera.isSelected();
+
+        
+        Pelicula peliculaModificada = new Pelicula();
+        peliculaModificada.setTitulo(titulo); 
+        peliculaModificada.setDirector(director); 
+        peliculaModificada.setOrigen(origen);
+        peliculaModificada.setGenero(genero);
+        peliculaModificada.setEstreno(estreno);
+        peliculaModificada.setEnCartelera(enCartelera);
+
+        
+        peliculaData.modificarPelicula(peliculaModificada);
+
+       
+        JOptionPane.showMessageDialog(this, "¡Pelicula modificada exitosamente!");
+        
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al modificar la pelicula: " + ex.getMessage());
+    }
         
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -328,6 +385,7 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
 

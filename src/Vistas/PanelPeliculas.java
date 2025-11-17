@@ -4,22 +4,53 @@
  */
 package Vistas;
 
+import Modelo.Pelicula;
+import Persistencia.PeliculaData;
 import java.awt.Frame;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author elias
  */
 public class PanelPeliculas extends javax.swing.JPanel {
-
+    private PeliculaData peliculaData;
+    private DefaultTableModel modeloTabla;
+    private List<Pelicula> listaCompletaPeliculas;
     /**
      * Creates new form PanelPeliculas
      */
     public PanelPeliculas() {
         initComponents();
+        peliculaData = new PeliculaData();
+        modeloTabla = (DefaultTableModel) jtblPelicula.getModel();
+        
+        this.listaCompletaPeliculas = peliculaData.listarTodasLasPeliculas();
+        llenarTabla(this.listaCompletaPeliculas);
     }
+    
+    private void llenarTabla(List<Pelicula> peliculas){
+        modeloTabla.setRowCount(0);
+        
+        for (Pelicula p : peliculas) {
+            String estado = p.isEnCartelera() ? "En Cartelera" : "Proximo Estreno";
+            modeloTabla.addRow(new Object[]{
+            p.getTitulo(),
+            p.getDirector(),
+            p.getOrigen(),
+            p.getGenero(),
+            estado
+        });   
+
+        };
+        }
+    
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +61,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        radioFiltro = new javax.swing.ButtonGroup();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -44,7 +75,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
         rdbtnVerCartelera = new javax.swing.JRadioButton();
         rdbtnVerEstrenos = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtblPelicula = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         btnIrAAdmin = new javax.swing.JButton();
 
@@ -75,13 +106,23 @@ public class PanelPeliculas extends javax.swing.JPanel {
 
         lblTituloPeli.setText("PELICULAS");
 
-        buttonGroup1.add(rdbtnVerTodas);
+        radioFiltro.add(rdbtnVerTodas);
         rdbtnVerTodas.setText("Ver Todas");
+        rdbtnVerTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbtnVerTodasActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(rdbtnVerCartelera);
+        radioFiltro.add(rdbtnVerCartelera);
         rdbtnVerCartelera.setText("Ver En Cartelera");
+        rdbtnVerCartelera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbtnVerCarteleraActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(rdbtnVerEstrenos);
+        radioFiltro.add(rdbtnVerEstrenos);
         rdbtnVerEstrenos.setText("Ver Estrenos");
         rdbtnVerEstrenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +130,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtblPelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,7 +141,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
                 "Titulo", "Director", "Genero", "Origen"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtblPelicula);
 
         btnIrAAdmin.setText("Panel Admin");
         btnIrAAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +162,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
                         .addComponent(rdbtnVerTodas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rdbtnVerCartelera)
-                        .addGap(177, 177, 177)
+                        .addGap(88, 88, 88)
                         .addComponent(rdbtnVerEstrenos))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -129,7 +170,7 @@ public class PanelPeliculas extends javax.swing.JPanel {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(301, 301, 301)
+                .addGap(222, 222, 222)
                 .addComponent(lblTituloPeli)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -140,9 +181,9 @@ public class PanelPeliculas extends javax.swing.JPanel {
                 .addComponent(btnIrAAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTituloPeli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTituloPeli)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdbtnVerTodas)
                     .addComponent(rdbtnVerCartelera)
@@ -168,6 +209,26 @@ public class PanelPeliculas extends javax.swing.JPanel {
 
     private void rdbtnVerEstrenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtnVerEstrenosActionPerformed
         // TODO add your handling code here:
+        List<Pelicula> peliculasFiltradas = new ArrayList<>();
+
+    if (rdbtnVerCartelera.isSelected()) {
+        
+       
+        peliculasFiltradas = peliculaData.listarPeliculasEnCartelera();
+
+    } else if (rdbtnVerEstrenos.isSelected()) {
+        
+        
+        peliculasFiltradas = peliculaData.listarPeliculasEstrenos();
+
+    } else { 
+        
+        
+        peliculasFiltradas = peliculaData.listarTodasLasPeliculas();
+    }
+
+    
+    llenarTabla(peliculasFiltradas);
     }//GEN-LAST:event_rdbtnVerEstrenosActionPerformed
 
     private void btnIrAAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrAAdminActionPerformed
@@ -184,10 +245,57 @@ public class PanelPeliculas extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnIrAAdminActionPerformed
 
+    private void rdbtnVerTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtnVerTodasActionPerformed
+        // TODO add your handling code here:
+        List<Pelicula> peliculasFiltradas = new ArrayList<>();
+
+    if (rdbtnVerCartelera.isSelected()) {
+        
+       
+        peliculasFiltradas = peliculaData.listarPeliculasEnCartelera();
+
+    } else if (rdbtnVerEstrenos.isSelected()) {
+        
+        
+        peliculasFiltradas = peliculaData.listarPeliculasEstrenos();
+
+    } else { 
+        
+        
+        peliculasFiltradas = peliculaData.listarTodasLasPeliculas();
+    }
+
+    
+    llenarTabla(peliculasFiltradas);
+    }//GEN-LAST:event_rdbtnVerTodasActionPerformed
+
+    private void rdbtnVerCarteleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbtnVerCarteleraActionPerformed
+        // TODO add your handling code here:
+        List<Pelicula> peliculasFiltradas = new ArrayList<>();
+
+    if (rdbtnVerCartelera.isSelected()) {
+        
+       
+        peliculasFiltradas = peliculaData.listarPeliculasEnCartelera();
+
+    } else if (rdbtnVerEstrenos.isSelected()) {
+        
+        
+        peliculasFiltradas = peliculaData.listarPeliculasEstrenos();
+
+    } else { 
+        
+        
+        peliculasFiltradas = peliculaData.listarTodasLasPeliculas();
+    }
+
+    
+    llenarTabla(peliculasFiltradas);
+    }//GEN-LAST:event_rdbtnVerCarteleraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIrAAdmin;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -198,8 +306,9 @@ public class PanelPeliculas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtblPelicula;
     private javax.swing.JLabel lblTituloPeli;
+    private javax.swing.ButtonGroup radioFiltro;
     private javax.swing.JRadioButton rdbtnVerCartelera;
     private javax.swing.JRadioButton rdbtnVerEstrenos;
     private javax.swing.JRadioButton rdbtnVerTodas;

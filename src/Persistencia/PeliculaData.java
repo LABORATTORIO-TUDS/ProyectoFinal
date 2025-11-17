@@ -165,10 +165,11 @@ public class PeliculaData {
 
     public List<Pelicula> listarPeliculasEnCartelera() {
         List<Pelicula> peliculas = new ArrayList<>();
-        String sql = "SELECT * FROM pelicula WHERE enCartelera = true"; 
+        String sql = "SELECT * FROM pelicula WHERE enCartelera = ?"; 
 
-        try (PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+             ps.setBoolean(1, true);
+            try(ResultSet rs = ps.executeQuery()){
 
             while (rs.next()) {
                 Pelicula pelicula = new Pelicula(
@@ -181,9 +182,37 @@ public class PeliculaData {
                 );
                 peliculas.add(pelicula);
             }
+        }
 
         } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al listar peliculas en cartelera: " + e.getMessage());
+        }
+        return peliculas;
+    }
+    
+    public List<Pelicula> listarPeliculasEstrenos() {
+        List<Pelicula> peliculas = new ArrayList<>();
+        String sql = "SELECT * FROM pelicula WHERE enCartelera = ?"; 
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+             ps.setBoolean(1, false);
+            try(ResultSet rs = ps.executeQuery()){
+
+            while (rs.next()) {
+                Pelicula pelicula = new Pelicula(
+                    rs.getString("titulo"),
+                    rs.getString("director"),
+                    rs.getString("origen"),
+                    rs.getString("genero"),
+                    rs.getDate("estreno"),
+                    rs.getBoolean("enCartelera")
+                );
+                peliculas.add(pelicula);
+            }
+        }
+
+        } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al listar proximos estrenos: " + e.getMessage());
         }
         return peliculas;
     }
