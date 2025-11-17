@@ -134,7 +134,7 @@ public class Proyeccion {
 
     @Override
     public String toString() {
-        return "IDIOMA: " + idioma + "TITULO: " + titulo + "SALA: " + nroSala;
+        return "CODIGO: " + codProyeccion + "SALA: " + nroSala;
     }
     
     

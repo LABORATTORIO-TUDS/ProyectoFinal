@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+
 import java.awt.CardLayout;
 
 /**
@@ -23,7 +24,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         initComponents();
         cardsito = (CardLayout) jPBody.getLayout();
         jPBody.add(new PanelPeliculas(), "PELICULAS");
-        
+        jPBody.add(new VistaProyeccion(), "PROYECCION");
     }
 
     /**
@@ -40,7 +41,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPBody = new javax.swing.JPanel();
+        jPInicio = new javax.swing.JPanel();
         jPCabecera = new javax.swing.JPanel();
         jLCinemacenter = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
@@ -54,7 +57,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Peliculas");
+        jLabel1.setText("Menu");
 
         jLabel2.setText("VISTA PELICULAS (PROVISIONAL)");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,25 +66,33 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("VISTA PROYECCION (PROVISIONAL)");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
         jPSideBar.setLayout(jPSideBarLayout);
         jPSideBarLayout.setHorizontalGroup(
             jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSideBarLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPSideBarLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
+                        .addComponent(jSeparator1)
+                        .addContainerGap())
                     .addGroup(jPSideBarLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPSideBarLayout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(jLabel1))
-                            .addGroup(jPSideBarLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 34, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addContainerGap(62, Short.MAX_VALUE))))
+            .addGroup(jPSideBarLayout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPSideBarLayout.setVerticalGroup(
             jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,6 +103,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -99,13 +112,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPBody.setPreferredSize(new java.awt.Dimension(500, 664));
         jPBody.setLayout(new java.awt.CardLayout());
 
+        jPInicio.setBackground(java.awt.SystemColor.controlLtHighlight);
+
+        javax.swing.GroupLayout jPInicioLayout = new javax.swing.GroupLayout(jPInicio);
+        jPInicio.setLayout(jPInicioLayout);
+        jPInicioLayout.setHorizontalGroup(
+            jPInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+        jPInicioLayout.setVerticalGroup(
+            jPInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
+        );
+
+        jPBody.add(jPInicio, "card2");
+
         jPCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLCinemacenter.setFont(new java.awt.Font("MingLiU_MSCS-ExtB", 1, 36)); // NOI18N
         jLCinemacenter.setForeground(new java.awt.Color(255, 255, 255));
         jLCinemacenter.setText("CINEMACENTER");
-        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 240, -1));
-        jPCabecera.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 80));
+        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 240, -1));
+        jPCabecera.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 80));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,9 +144,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +165,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +178,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         cardsito.show(jPBody, "PELICULAS");
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        cardsito.show(jPBody, "PROYECCION");
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -181,8 +213,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLCinemacenter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPBody;
     private javax.swing.JPanel jPCabecera;
+    private javax.swing.JPanel jPInicio;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
