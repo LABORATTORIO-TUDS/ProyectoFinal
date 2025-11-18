@@ -11,7 +11,7 @@ import java.time.LocalTime;
  * @author elias
  */
 public class Proyeccion {
-   
+
     private int codProyeccion;
     private String idioma;
     private boolean es3D;
@@ -22,11 +22,11 @@ public class Proyeccion {
     private String titulo;
     private String director;
     private int nroSala;
-    
-    public Proyeccion(){
-        
+
+    public Proyeccion() {
+
     }
-    
+
     public Proyeccion(int codProyeccion, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, double precio, String titulo, String director, int nroSala) {
         this.codProyeccion = codProyeccion;
         this.idioma = idioma;
@@ -134,17 +134,17 @@ public class Proyeccion {
 
     @Override
     public String toString() {
-        return "CODIGO: " + codProyeccion + "SALA: " + nroSala;
+        String formato3D = this.isEs3D() ? " (3D)" : "";
+        String formatoSub = this.isSubtitulada() ? " (SUB)" : "";
+        String formatoIdioma = this.getIdioma().isEmpty() ? "" : " (" + this.getIdioma() + ")";
+
+        
+        return this.getTitulo()
+                + formato3D
+                + formatoSub
+                + formatoIdioma
+                + " | " + this.getHoraInicio() + " hs"
+                + " | $" + String.format("%.2f", this.getPrecio());
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

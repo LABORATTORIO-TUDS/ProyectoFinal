@@ -25,6 +25,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         cardsito = (CardLayout) jPBody.getLayout();
         jPBody.add(new PanelPeliculas(), "PELICULAS");
         jPBody.add(new VistaProyeccion(), "PROYECCION");
+        jPBody.add(new PanelGestionTickets(), "TICKETS");
+        
     }
 
     /**
@@ -42,6 +44,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblGestionTickets = new javax.swing.JLabel();
         jPBody = new javax.swing.JPanel();
         jPInicio = new javax.swing.JPanel();
         jPCabecera = new javax.swing.JPanel();
@@ -73,6 +76,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblGestionTickets.setText("VISTA GESTION TICKETS");
+        lblGestionTickets.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGestionTicketsMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
         jPSideBar.setLayout(jPSideBarLayout);
         jPSideBarLayout.setHorizontalGroup(
@@ -87,7 +97,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(lblGestionTickets))
                         .addContainerGap(62, Short.MAX_VALUE))))
             .addGroup(jPSideBarLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
@@ -105,6 +116,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblGestionTickets)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -183,6 +196,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         cardsito.show(jPBody, "PROYECCION");
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void lblGestionTicketsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGestionTicketsMouseClicked
+        cardsito.show(jPBody, "TICKETS");
+    }//GEN-LAST:event_lblGestionTicketsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -226,5 +243,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblGestionTickets;
     // End of variables declaration//GEN-END:variables
 }
