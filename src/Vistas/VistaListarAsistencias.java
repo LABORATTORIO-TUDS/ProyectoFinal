@@ -4,17 +4,93 @@
  */
 package Vistas;
 
+import Modelo.Comprador;
+import Modelo.TicketCompra;
+import Persistencia.CompradorData;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author crist
  */
 public class VistaListarAsistencias extends javax.swing.JPanel {
 
+    private DefaultTableModel tableModel;
+    private CompradorData compData;
+
     /**
      * Creates new form VistaListarAsistencias
      */
     public VistaListarAsistencias() {
         initComponents();
+
+        compData = new CompradorData();
+        tableModel = new DefaultTableModel();
+
+        configurarTabla();
+        jdcDesdeFecha.setDate(new java.util.Date());
+        jdcHastaFecha.setDate(new java.util.Date());
+    }
+
+    private void configurarTabla() {
+        tableModel.addColumn("DNI");
+        tableModel.addColumn("Nombre");
+        tableModel.addColumn("Cant. Tickets");
+        tableModel.addColumn("Total Gastado ($)");;
+        jtInforme.setModel(tableModel);
+
+    }
+
+    private void actualizarLista() {
+        if (tableModel == null) {
+            return;
+        }
+        Date desde = jdcDesdeFecha.getDate();
+        Date hasta = jdcHastaFecha.getDate();
+
+        if (desde == null || hasta == null) {
+            return;
+        }
+        if (desde.after(hasta)) {
+                JOptionPane.showMessageDialog(this, "La fecha 'Desde' no puede ser mayor a la fecha 'Hasta'.");
+            return; 
+        }
+        java.sql.Date desdesql = new java.sql.Date(desde.getTime());
+        java.sql.Date hastasql = new java.sql.Date(hasta.getTime());
+        limpiarTabla();
+
+        List<Comprador> listaCompradores = compData.asistenciaDelDia(desdesql, hastasql);
+        
+        for (Comprador comprador : listaCompradores) {
+            double totalGastado = 0;
+            int cantidadTickets = 0;
+
+            if (comprador.getTickets() != null) {
+                cantidadTickets = comprador.getTickets().size();
+                for (TicketCompra ticket : comprador.getTickets()) {
+                    totalGastado += ticket.getMontoTotal();
+                }
+            }
+            tableModel.addRow(new Object[]{
+                comprador.getDni(),
+                comprador.getNombre(),
+                cantidadTickets,
+                totalGastado
+            });
+        }
+
+    }
+
+    private void limpiarTabla() {
+        if (tableModel != null) {
+            int rowCount = tableModel.getRowCount();
+            for (int i = rowCount - 1; i >= 0; i--) {
+                tableModel.removeRow(i);
+            }
+        }
     }
 
     /**
@@ -26,19 +102,109 @@ public class VistaListarAsistencias extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtInforme = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jdcDesdeFecha = new com.toedter.calendar.JDateChooser();
+        jdcHastaFecha = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jtInforme.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtInforme);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Informe de ventas");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jdcDesdeFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcDesdeFechaPropertyChange(evt);
+            }
+        });
+
+        jdcHastaFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcHastaFechaPropertyChange(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Desde fecha:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Hasta fecha:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jdcDesdeFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jdcHastaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(66, 66, 66)))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdcHastaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdcDesdeFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jdcHastaFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcHastaFechaPropertyChange
+        if ("date".equals(evt.getPropertyName())) {
+            actualizarLista();
+        }    }//GEN-LAST:event_jdcHastaFechaPropertyChange
+
+    private void jdcDesdeFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdcDesdeFechaPropertyChange
+        if ("date".equals(evt.getPropertyName())) {
+            actualizarLista();
+        }    }//GEN-LAST:event_jdcDesdeFechaPropertyChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdcDesdeFecha;
+    private com.toedter.calendar.JDateChooser jdcHastaFecha;
+    private javax.swing.JTable jtInforme;
     // End of variables declaration//GEN-END:variables
 }

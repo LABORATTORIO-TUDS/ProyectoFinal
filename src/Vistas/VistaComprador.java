@@ -21,7 +21,7 @@ public class VistaComprador extends javax.swing.JPanel {
      */
     public VistaComprador() {
         initComponents();
-        this.compData = new CompradorData(null);
+        this.compData = new CompradorData();
     }
     
     private void limpiarCampos() {

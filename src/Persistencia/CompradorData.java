@@ -8,6 +8,11 @@ import Modelo.Comprador;
 import java.sql.*;
 
 import Modelo.Conexion;
+import Modelo.TicketCompra;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class CompradorData {
     private Connection con = null;
+    private final ProyeccionData proyData;
+    private final DetalleTicketData detData;
     
     public CompradorData(){
         this.con = Conexion.conectar();
+        this.proyData = new ProyeccionData();
+        this.detData = new DetalleTicketData();
     }
     
     public void guardarComprador(Comprador comprador) {
@@ -29,20 +38,37 @@ public class CompradorData {
                 ps.setString(2, comprador.getNombre());
                 ps.setDate(3, new java.sql.Date(comprador.getFechaNac().getTime())); 
                 ps.setString(4, comprador.getPassword());
-                
                 ps.executeUpdate();
                 
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Comprador registrado con DNI: " + comprador.getDni());
                 }
-            
-            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al guardar el comprador: " + ex.getMessage());
         }
     }
     
+    public void actualizarComprador(Comprador comprador) {
+        String sql = "UPDATE comprador SET nombre = ?, fechaNac = ?, password = ? WHERE dni = ?";
+        
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, comprador.getNombre());
+            ps.setDate(2, new java.sql.Date(comprador.getFechaNac().getTime()));
+            ps.setString(3, comprador.getPassword());
+            ps.setInt(4, comprador.getDni());
+            int filasAfectadas = ps.executeUpdate();
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(null, "Comprador actualizado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro el comprador con DNI: " + comprador.getDni());
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el comprador: " + ex.getMessage());
+            ex.printStackTrace(); 
+        }
+    }
  
     public Comprador buscarCompradorPorDni(int dni) {
         Comprador comprador = null;
@@ -95,4 +121,88 @@ public class CompradorData {
         
         return comprador;
     }
+    
+    public void eliminarComprador(int dni) {
+        String sql = "DELETE FROM comprador WHERE dni = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setInt(1, dni);
+
+            int filasAfectadas = ps.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(null, "Comprador eliminado exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro un comprador con ese DNI.");
+            }
+
+        } catch (SQLException ex) {
+          
+            if (ex.getErrorCode() == 1451) { 
+                JOptionPane.showMessageDialog(null, "No se puede eliminar el comprador porque tiene tickets asociados.\n"
+                        + "Debe eliminar primero sus tickets o historial de compras.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al eliminar el comprador: " + ex.getMessage());
+            }
+        }
+    }
+    
+    public List<Comprador> asistenciaDelDia(Date fechaDesde, Date fechaHasta) {
+        
+        Map<Integer, Comprador> compradoresMap = new HashMap<>();
+
+        String sql = "SELECT "
+                   + "c.dni, c.nombre, c.fechaNac, c.password, " 
+                   + "tc.codTicket, tc.fechaCompra, tc.montoTotal, tc.codProyeccion " 
+                   + "FROM comprador c "
+                   + "INNER JOIN ticketcompra tc ON c.dni = tc.dni "
+                   + "INNER JOIN proyeccion p ON tc.codProyeccion = p.codProyeccion "
+                   + "WHERE p.fechaProyeccion BETWEEN ? and ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setDate(1, new java.sql.Date(fechaDesde.getTime()));
+            ps.setDate(2, new java.sql.Date(fechaHasta.getTime()));
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                
+                while (rs.next()) {
+                    int dni = rs.getInt("dni");
+                    
+                    Comprador comprador = compradoresMap.get(dni);
+
+                    if (comprador == null) {
+                        comprador = new Comprador();
+                        comprador.setDni(dni);
+                        comprador.setNombre(rs.getString("nombre"));
+                        comprador.setFechaNac(rs.getDate("fechaNac"));
+                        comprador.setPassword(rs.getString("password"));
+                        
+                        comprador.setTickets(new ArrayList<>());
+                        
+                        compradoresMap.put(dni, comprador);
+                    }
+
+                    
+                    TicketCompra ticket = new TicketCompra();
+                    ticket.setCodTicket(rs.getInt("codTicket"));
+                    ticket.setFechaCompra(rs.getDate("fechaCompra"));
+                    ticket.setMontoTotal(rs.getDouble("montoTotal"));
+                    
+                    ticket.setComprador(comprador); 
+                    ticket.setProyeccion(proyData.buscarProyeccion(rs.getInt("codProyeccion")));
+                    ticket.setDetalles(detData.buscarDetallesPorTicket(ticket.getCodTicket()));
+
+                    comprador.getTickets().add(ticket);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al consultar asistencias: " + ex.getMessage());
+            ex.printStackTrace(); 
+        }
+
+        return new ArrayList<>(compradoresMap.values());
+    }
+    
 }
