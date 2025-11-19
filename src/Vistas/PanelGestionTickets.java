@@ -4,9 +4,13 @@
  */
 package Vistas;
 
+/**
+ *
+ * @author Victor
+ */
 import Modelo.*;
 import Persistencia.*;
-import Vistas.PanelSalas;
+import Vistas.PanelElegirAsientos;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,13 +20,17 @@ import javax.swing.JOptionPane;
 
 public class PanelGestionTickets extends javax.swing.JPanel {
 
-    private PanelSalas miPanelSalas;
+    /**
+     * Creates new form PanelGestionTickets
+     */
+    private PanelElegirAsientos miPanelSalas;
     private Comprador compradorActual = null;
 
     public PanelGestionTickets() {
         initComponents();
-        miPanelSalas = new PanelSalas();
+        miPanelSalas = new PanelElegirAsientos();
         cargarDatosIniciales();
+
     }
 
     /**
@@ -119,7 +127,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         );
 
         jlAsientosSel.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = {  };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -130,8 +138,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         lblMetodoDePago.setText("Metodo de pago");
 
         cbMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblTotalAPagar.setText("jLabel1");
 
         btnConfirmarVenta.setText("Confirmar Venta");
         btnConfirmarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -149,13 +155,10 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(lblAsientosSeleccionados))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAsientosSeleccionados)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -187,18 +190,16 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                                         .addComponent(lblSala, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbSala, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(66, 66, 66))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(lblMetodoDePago)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConfirmarVenta)
+                                .addGap(66, 66, 66))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblMetodoDePago)
+                                .addGap(18, 18, 18)
                                 .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
-                                .addComponent(lblTotalAPagar)))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                                .addComponent(lblTotalAPagar)
+                                .addGap(28, 28, 28)
+                                .addComponent(btnConfirmarVenta)))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,16 +231,14 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblAsientosSeleccionados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)))
-                .addGap(42, 42, 42)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMetodoDePago)
                     .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalAPagar))
-                .addGap(31, 31, 31)
-                .addComponent(btnConfirmarVenta)
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(lblTotalAPagar)
+                    .addComponent(btnConfirmarVenta))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -272,9 +271,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             compradorActual = compData.buscarCompradorPorDni(dni);
 
             if (compradorActual != null) {
+                
                 jTextPane1.setText(compradorActual.getNombre());
                 JOptionPane.showMessageDialog(this, "Comprador encontrado: " + compradorActual.getNombre());
             } else {
+                
                 jTextPane1.setText("Comprador no existe");
             }
 
@@ -291,31 +292,34 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             return;
         }
 
+       
         final double precioUnitario = proyeccionSeleccionada.getPrecio();
 
+        
         if (miPanelSalas == null) {
-            miPanelSalas = new PanelSalas();
+            miPanelSalas = new PanelElegirAsientos();
         }
 
-        /*
+        
         miPanelSalas.setObservador((listaSeleccionada) -> {
+
             DefaultListModel<String> modelo = new DefaultListModel<>();
             double total = 0;
 
             for (Asiento a : listaSeleccionada) {
                 modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
-                total += precioUnitario; 
+                total += precioUnitario; // Usa el precio de la Proyección
             }
 
             jlAsientosSel.setModel(modelo);
             lblTotalAPagar.setText("$ " + String.format("%.2f", total));
         });
-        */
 
+        
         AsientoData ad = new AsientoData();
         List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
 
-        // miPanelSalas.cargarAsientos(asientosBD); // COMENTADO
+        miPanelSalas.cargarAsientos(asientosBD);
 
         panelContenedor.removeAll();
         panelContenedor.setLayout(new java.awt.BorderLayout());
@@ -323,26 +327,29 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         panelContenedor.revalidate();
         panelContenedor.repaint();
     }//GEN-LAST:event_btnSeleccionarAsientosActionPerformed
-
     private void filtrarCombos() {
         String tituloSeleccionado = (String) cbPelicula.getSelectedItem();
         String salaString = (String) cbSala.getSelectedItem();
 
         int nroSalaSeleccionada = 0;
 
+        
         if (salaString != null && salaString.contains(":")) {
             try {
                 nroSalaSeleccionada = Integer.parseInt(salaString.split(":")[1].trim());
             } catch (NumberFormatException ignored) {
+                
             }
         }
 
         ProyeccionData proyData = new ProyeccionData();
+        
         List<Proyeccion> proyecciones = proyData.listaProyecciones();
 
         cbHorario.removeAllItems();
 
         for (Proyeccion p : proyecciones) {
+            
             boolean coincidePelicula = p.getTitulo().equals(tituloSeleccionado);
             boolean coincideSala = (nroSalaSeleccionada == 0) || (p.getNroSala() == nroSalaSeleccionada);
 
@@ -353,6 +360,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     }
 
     private void cargarDatosIniciales() {
+        
         PeliculaData pelData = new PeliculaData();
         List<Pelicula> peliculas = pelData.listarPeliculasEnCartelera();
 
@@ -361,6 +369,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             cbPelicula.addItem(p.getTitulo());
         }
 
+        
         SalaData salaData = new SalaData();
         List<Sala> salas = salaData.listarSalas();
 
@@ -369,6 +378,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             cbSala.addItem("Sala Nro: " + s.getNroSala());
         }
 
+       
         cbMetodoDePago.removeAllItems();
         cbMetodoDePago.addItem("Efectivo / Contado");
         cbMetodoDePago.addItem("Débito");
@@ -394,9 +404,10 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         for (Proyeccion p : todasProyecciones) {
             if (p.getTitulo().equals(tituloSeleccionado)) {
-                ((javax.swing.JComboBox) cbHorario).addItem(p);
+                ((javax.swing.JComboBox) cbHorario).addItem(p); 
             }
         }
+
     }
 
     private void limpiarVista() {
@@ -413,7 +424,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         cargarDatosIniciales();
     }
-
     private void btnConfirmarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarVentaActionPerformed
         if (compradorActual == null) {
             JOptionPane.showMessageDialog(this, "Debe buscar o registrar un Comprador (DNI).");
@@ -424,20 +434,17 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             return;
         }
 
-        /*
         List<Asiento> asientosComprados = miPanelSalas.getAsientosSeleccionados();
         if (asientosComprados.isEmpty()) {
-             JOptionPane.showMessageDialog(this, "No ha seleccionado ningún asiento.");
-             return;
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún asiento.");
+            return;
         }
-        */
 
         Proyeccion proyeccion = (Proyeccion) cbHorario.getSelectedItem();
 
         List<DetalleTicket> detalles = new ArrayList<>();
         double montoTotal = 0;
 
-        /*
         for (Asiento asiento : asientosComprados) {
             DetalleTicket detalle = new DetalleTicket();
             detalle.setAsiento(asiento);
@@ -447,7 +454,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             montoTotal += subtotal;
             detalles.add(detalle);
         }
-        */
 
         TicketCompra nuevoTicket = new TicketCompra();
         nuevoTicket.setComprador(compradorActual);
@@ -456,27 +462,20 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         nuevoTicket.setMontoTotal(montoTotal);
         nuevoTicket.setDetalles(detalles);
 
-        /*
         AsientoData asientoData = new AsientoData();
         for (Asiento asiento : asientosComprados) {
             asientoData.actualizarEstadoAsiento(asiento.getCodAsiento(), "OCUPADO");
         }
-        */
 
         TicketCompraData ticketData = new TicketCompraData();
-        // boolean exito = ticketData.guardarTicket(nuevoTicket); 
+        boolean exito = ticketData.guardarTicket(nuevoTicket);
 
-        /*
         if (exito) {
             JOptionPane.showMessageDialog(this, "¡Venta Exitosa! Ticket Nro: " + nuevoTicket.getCodTicket());
             limpiarVista();
         } else {
             JOptionPane.showMessageDialog(this, "Venta fallida. Consulte el error en la consola.");
         }
-        */
-        
-        JOptionPane.showMessageDialog(this, "Funcionalidad de venta deshabilitada temporalmente (Mantenimiento Salas).");
-        
     }//GEN-LAST:event_btnConfirmarVentaActionPerformed
 
 
