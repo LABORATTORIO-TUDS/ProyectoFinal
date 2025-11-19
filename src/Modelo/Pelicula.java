@@ -77,5 +77,10 @@ public class Pelicula {
     public void setEnCartelera(boolean enCartelera) {
         this.enCartelera = enCartelera;
     }
-    
+
+    @Override
+    public String toString() {
+        return titulo;
+    }
+ 
 }
