@@ -44,8 +44,6 @@ public class VistaComprador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlDni = new javax.swing.JLabel();
-        jtfDni = new javax.swing.JTextField();
         jlNombre = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jlPass = new javax.swing.JLabel();
@@ -53,40 +51,39 @@ public class VistaComprador extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         jlTitulo = new javax.swing.JLabel();
         jpfPass = new javax.swing.JPasswordField();
         jDateFechaNac = new com.toedter.calendar.JDateChooser();
         btnLimpiar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jlDni = new javax.swing.JLabel();
+        jtfDni = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(670, 664));
         setMinimumSize(new java.awt.Dimension(200, 180));
         setPreferredSize(new java.awt.Dimension(670, 664));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlDni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jlDni.setText("DNI:");
-        add(jlDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
-
-        jtfDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfDniActionPerformed(evt);
-            }
-        });
-        add(jtfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 175, -1));
-
-        jlNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlNombre.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jlNombre.setForeground(java.awt.SystemColor.controlShadow);
         jlNombre.setText("Nombre y Apellido:");
-        add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, 40));
-        add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 175, -1));
+        add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, 40));
+        add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 175, -1));
 
-        jlPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlPass.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jlPass.setForeground(java.awt.SystemColor.controlShadow);
         jlPass.setText("Password:");
-        add(jlPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, 40));
+        add(jlPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, 60));
 
-        jlFechaNac.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jlFechaNac.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jlFechaNac.setForeground(java.awt.SystemColor.controlShadow);
         jlFechaNac.setText("Fecha Nacimiento:");
-        add(jlFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 405, -1, 30));
+        add(jlFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, 40));
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +91,7 @@ public class VistaComprador extends javax.swing.JPanel {
                 btnAgregarActionPerformed(evt);
             }
         });
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 591, 110, 35));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 550, 110, 50));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +99,7 @@ public class VistaComprador extends javax.swing.JPanel {
                 btnEliminarActionPerformed(evt);
             }
         });
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, 110, 35));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, 110, 50));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,22 +107,15 @@ public class VistaComprador extends javax.swing.JPanel {
                 btnActualizarActionPerformed(evt);
             }
         });
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 110, 35));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, 110, 50));
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 249, 110, 35));
-
-        jlTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jlTitulo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        jlTitulo.setForeground(java.awt.SystemColor.controlShadow);
         jlTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlTitulo.setText("Gestion compradores");
-        add(jlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 29, 670, 112));
-        add(jpfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 175, -1));
-        add(jDateFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 175, -1));
+        add(jlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 670, 60));
+        add(jpfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 175, -1));
+        add(jDateFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 175, -1));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +123,56 @@ public class VistaComprador extends javax.swing.JPanel {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 110, 35));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 110, 50));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 650, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 243, 650, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 650, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 10));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jlDni.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jlDni.setForeground(new java.awt.Color(0, 153, 153));
+        jlDni.setText("DNI:");
+
+        jtfDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDniActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jlDni, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(btnBuscar)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jlDni, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 650, 80));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -250,6 +289,11 @@ public class VistaComprador extends javax.swing.JPanel {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private com.toedter.calendar.JDateChooser jDateFechaNac;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel jlDni;
     private javax.swing.JLabel jlFechaNac;
     private javax.swing.JLabel jlNombre;

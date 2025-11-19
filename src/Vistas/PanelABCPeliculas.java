@@ -73,19 +73,23 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
         jcbEnCartelera = new javax.swing.JCheckBox();
         btnBuscar = new javax.swing.JButton();
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         lblTitle.setText("Panel Admin");
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblTitulo.setForeground(java.awt.SystemColor.controlShadow);
         lblTitulo.setText("Titulo:");
 
-        lblDirector.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDirector.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblDirector.setForeground(java.awt.SystemColor.controlShadow);
         lblDirector.setText("Director:");
 
-        lblOrigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblOrigen.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblOrigen.setForeground(java.awt.SystemColor.controlShadow);
         lblOrigen.setText("Origen:");
 
-        lblGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGenero.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblGenero.setForeground(java.awt.SystemColor.controlShadow);
         lblGenero.setText("Genero:");
 
         jtfTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -128,10 +132,12 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
             }
         });
 
-        lblFechaEstreno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaEstreno.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblFechaEstreno.setForeground(java.awt.SystemColor.controlShadow);
         lblFechaEstreno.setText("Fecha Estr.:");
 
-        lblEnCartelra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEnCartelra.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblEnCartelra.setForeground(java.awt.SystemColor.controlShadow);
         lblEnCartelra.setText("En Cartelera:");
 
         jcbEnCartelera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -151,9 +157,6 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(lblTitle))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -170,8 +173,8 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
                                     .addComponent(lblOrigen)
                                     .addComponent(lblGenero)
                                     .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblFechaEstreno)
-                                    .addComponent(lblEnCartelra))
+                                    .addComponent(lblEnCartelra)
+                                    .addComponent(lblFechaEstreno))
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -182,15 +185,18 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
                                     .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdcEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jdcEstreno, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(lblTitle)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(lblTitle)
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,14 +221,14 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEnCartelra)
-                    .addComponent(jcbEnCartelera)
+                    .addComponent(jcbEnCartelera, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 

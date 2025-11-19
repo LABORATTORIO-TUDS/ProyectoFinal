@@ -38,7 +38,6 @@ public class VistaSalas extends javax.swing.JPanel {
     private void initComponents() {
 
         btnGuardar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -48,6 +47,7 @@ public class VistaSalas extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNumeroSala = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         cboEstado = new javax.swing.JComboBox<>();
@@ -65,15 +65,7 @@ public class VistaSalas extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 100, 60));
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 100, 60));
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 100, 50));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +73,7 @@ public class VistaSalas extends javax.swing.JPanel {
                 btnModificarActionPerformed(evt);
             }
         });
-        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 100, 60));
+        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 100, 50));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +81,7 @@ public class VistaSalas extends javax.swing.JPanel {
                 btnEliminarActionPerformed(evt);
             }
         });
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 100, 60));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 100, 50));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,19 +89,27 @@ public class VistaSalas extends javax.swing.JPanel {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 100, 60));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 100, 50));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 15, 652, 10));
 
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(java.awt.SystemColor.controlShadow);
         jLabel4.setText("Gestion de Salas");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 40));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 59, 652, 10));
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(java.awt.SystemColor.textHighlight);
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("Numero de sala:");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,33 +118,44 @@ public class VistaSalas extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(txtNumeroSala, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(245, 245, 245))
+                .addGap(89, 89, 89)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNumeroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 652, 160));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 652, 80));
 
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(java.awt.SystemColor.controlShadow);
         jLabel5.setText("Estado de la sala: ");
 
-        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIBRE,", "OCUPADO" }));
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIBRE", "OCUPADO" }));
+        cboEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEstadoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(java.awt.SystemColor.controlShadow);
         jLabel2.setText("Capacidad de la sala: ");
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(java.awt.SystemColor.controlShadow);
         jLabel3.setText("Es apta para 3D");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -166,12 +177,12 @@ public class VistaSalas extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(28, 28, 28)
                 .addComponent(chkApta3D)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -184,8 +195,8 @@ public class VistaSalas extends javax.swing.JPanel {
                 .addGap(31, 31, 31))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 650, 150));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 433, 650, 10));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 652, 150));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 650, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -258,6 +269,10 @@ public class VistaSalas extends javax.swing.JPanel {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void cboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

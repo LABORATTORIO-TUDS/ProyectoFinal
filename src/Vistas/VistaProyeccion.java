@@ -363,7 +363,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel1.setForeground(java.awt.SystemColor.controlShadow);
         jLabel1.setText("PELICULA A PROYECTAR");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, 23));
 
@@ -371,7 +371,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
         add(jCBPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 220, -1));
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel2.setForeground(java.awt.SystemColor.controlShadow);
         jLabel2.setText("SALA DONDE SERA LA PROYECCION");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 340, -1));
 
@@ -379,7 +379,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
         add(jCBSalas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 220, -1));
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel3.setForeground(java.awt.SystemColor.controlShadow);
         jLabel3.setText("IDIOMA");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
@@ -395,11 +395,11 @@ public class VistaProyeccion extends javax.swing.JPanel {
                 jCheckBox_Es3DActionPerformed(evt);
             }
         });
-        add(jCheckBox_Es3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, 20));
+        add(jCheckBox_Es3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, 20));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 10));
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel4.setForeground(java.awt.SystemColor.controlShadow);
         jLabel4.setText("ES SUBTITULADA");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, 20));
 
@@ -414,26 +414,26 @@ public class VistaProyeccion extends javax.swing.JPanel {
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 640, 10));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        jLabel5.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel5.setForeground(java.awt.SystemColor.controlShadow);
         jLabel5.setText("HORA DE INICIO Y DE FINAL");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
         add(jspHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 70, -1));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 650, 10));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 470, 10));
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel6.setForeground(java.awt.SystemColor.controlShadow);
         jLabel6.setText("ES 3D");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, 20));
         add(jspHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 70, -1));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 60, 10));
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel7.setForeground(java.awt.SystemColor.controlShadow);
         jLabel7.setText("PRECIO");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 50));
 
         jTFPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        add(jTFPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 180, 30));
+        add(jTFPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 180, 30));
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -478,6 +478,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel8.setForeground(new java.awt.Color(0, 153, 153));
         jLabel8.setText("CODIGO PROYECCION");
         jPanel1.add(jLabel8);
 
@@ -488,7 +489,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
         });
         jPanel1.add(jTFCodProyeccion);
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 170, 70));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, 60));
 
         jBEditar.setText("Editar");
         jBEditar.addActionListener(new java.awt.event.ActionListener() {

@@ -29,7 +29,7 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="PELICULA A PROYECTAR"/>
       </Properties>
@@ -63,7 +63,7 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="SALA DONDE SERA LA PROYECCION"/>
       </Properties>
@@ -97,7 +97,7 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="IDIOMA"/>
       </Properties>
@@ -146,7 +146,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="430" y="290" width="-1" height="20"/>
+          <AbsoluteConstraints x="410" y="290" width="-1" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -163,7 +163,7 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ES SUBTITULADA"/>
       </Properties>
@@ -204,7 +204,7 @@
           <Font name="Microsoft YaHei" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="HORA DE INICIO Y DE FINAL"/>
       </Properties>
@@ -224,7 +224,7 @@
     <Component class="javax.swing.JSeparator" name="jSeparator6">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="360" width="650" height="10"/>
+          <AbsoluteConstraints x="10" y="360" width="470" height="10"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -234,13 +234,13 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ES 3D"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="350" y="290" width="-1" height="20"/>
+          <AbsoluteConstraints x="320" y="290" width="-1" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -264,7 +264,7 @@
           <Font name="Microsoft YaHei UI" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" id="Active Caption Text" palette="2" red="0" type="palette"/>
+          <Color blue="a0" green="a0" id="Control Shadow" palette="2" red="a0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="PRECIO"/>
       </Properties>
@@ -284,7 +284,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="320" width="180" height="30"/>
+          <AbsoluteConstraints x="130" y="320" width="180" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -385,7 +385,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="490" y="280" width="170" height="70"/>
+          <AbsoluteConstraints x="490" y="310" width="170" height="60"/>
         </Constraint>
       </Constraints>
 
@@ -393,6 +393,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="CODIGO PROYECCION"/>
           </Properties>
         </Component>
