@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class PanelGestionTickets extends javax.swing.JPanel {
@@ -45,9 +46,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         btnBuscar = new javax.swing.JToggleButton();
         jtfDNI = new javax.swing.JTextField();
         lblDNI = new javax.swing.JLabel();
@@ -59,7 +57,8 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         btnSeleccionarAsientos = new javax.swing.JToggleButton();
         lblHorarios = new javax.swing.JLabel();
         cbHorario = new javax.swing.JComboBox<>();
-        panelContenedor = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jlAsientosSel = new javax.swing.JList<>();
         lblAsientosSeleccionados = new javax.swing.JLabel();
@@ -72,13 +71,15 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         btnBuscarTicket = new javax.swing.JButton();
         btnAnularTicket = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        pnlAsientos = new javax.swing.JPanel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jTextPane1.setText("Su nombre");
-        jScrollPane2.setViewportView(jTextPane1);
+        setMaximumSize(new java.awt.Dimension(400, 300));
+        setMinimumSize(new java.awt.Dimension(400, 300));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBuscar.setText("buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +87,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 89, -1, -1));
 
         jtfDNI.setText("Ingrese su DNI");
         jtfDNI.addActionListener(new java.awt.event.ActionListener() {
@@ -93,22 +95,29 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 jtfDNIActionPerformed(evt);
             }
         });
+        add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 84, 131, 32));
 
         lblDNI.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
         lblDNI.setText("DNI");
+        add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 85, -1, 32));
 
         lblGestion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblGestion.setText("Gestion de tickets");
+        add(lblGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 33, -1, -1));
 
         lblPelicula.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
         lblPelicula.setText("Pelicula");
+        add(lblPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 135, 60, 27));
 
         cbPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 136, 131, -1));
 
         lblSala.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
         lblSala.setText("Sala");
+        add(lblSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 135, 58, 27));
 
         cbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 136, 131, -1));
 
         btnSeleccionarAsientos.setText("Seleccionar asientos");
         btnSeleccionarAsientos.addActionListener(new java.awt.event.ActionListener() {
@@ -116,21 +125,18 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnSeleccionarAsientosActionPerformed(evt);
             }
         });
+        add(btnSeleccionarAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 220, -1, -1));
 
         lblHorarios.setText("Horario");
+        add(lblHorarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 180, -1, -1));
 
         cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 180, 131, -1));
 
-        javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
-        panelContenedor.setLayout(panelContenedorLayout);
-        panelContenedorLayout.setHorizontalGroup(
-            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
-        );
-        panelContenedorLayout.setVerticalGroup(
-            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 268, Short.MAX_VALUE)
-        );
+        jTextPane1.setText("Su nombre");
+        jScrollPane2.setViewportView(jTextPane1);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 84, 201, 32));
 
         jlAsientosSel.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = {  };
@@ -139,11 +145,17 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jlAsientosSel);
 
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 287, 142, 166));
+
         lblAsientosSeleccionados.setText("Asientos seleccionados");
+        add(lblAsientosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 265, -1, -1));
 
         lblMetodoDePago.setText("Metodo de pago");
+        add(lblMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 532, -1, -1));
 
         cbMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 529, -1, -1));
+        add(lblTotalAPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 525, 10, 20));
 
         btnConfirmarVenta.setText("Confirmar Venta");
         btnConfirmarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -151,8 +163,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnConfirmarVentaActionPerformed(evt);
             }
         });
+        add(btnConfirmarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 529, -1, -1));
+        add(jtfCodigoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 43, -1, -1));
 
         jLabel1.setText("Codigo Ticket:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 46, -1, -1));
 
         btnBuscarTicket.setText("Buscar");
         btnBuscarTicket.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +175,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnBuscarTicketActionPerformed(evt);
             }
         });
+        add(btnBuscarTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 43, -1, -1));
 
         btnAnularTicket.setText("Anular ticket");
         btnAnularTicket.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +183,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnAnularTicketActionPerformed(evt);
             }
         });
+        add(btnAnularTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 558, -1, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -174,141 +191,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 558, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAsientosSeleccionados)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblGestion)
-                                    .addGap(67, 67, 67)
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jtfCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnBuscarTicket))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblDNI)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnBuscar)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSeleccionarAsientos)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lblPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lblHorarios)
-                                                .addGap(26, 26, 26)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cbPelicula, 0, 131, Short.MAX_VALUE)
-                                            .addComponent(cbHorario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(46, 46, 46)
-                                        .addComponent(lblSala, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbSala, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(66, 66, 66))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblMetodoDePago)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(lblTotalAPagar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnConfirmarVenta)
-                                .addGap(64, 64, 64)))))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAnularTicket)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar)
-                .addGap(154, 154, 154))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(lblGestion))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(btnBuscarTicket))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscar)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSala, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHorarios))
-                .addGap(18, 18, 18)
-                .addComponent(btnSeleccionarAsientos)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblAsientosSeleccionados)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMetodoDePago)
-                    .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalAPagar)
-                    .addComponent(btnConfirmarVenta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAnularTicket)
-                    .addComponent(btnCancelar))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        pnlAsientos.setBorder(new javax.swing.border.MatteBorder(null));
+        pnlAsientos.setLayout(new java.awt.BorderLayout());
+        add(pnlAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 250));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDNIActionPerformed
@@ -337,8 +224,10 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarAsientosActionPerformed
-        ticketActual = null;
+       // 1. Reiniciar el estado de Anulación (Siempre iniciamos en modo Nueva Venta aquí)
+    ticketActual = null;
     
+    // Obtener la Proyeccion seleccionada (usando el cast crudo necesario)
     Proyeccion proyeccionSeleccionada = (Proyeccion) ((javax.swing.JComboBox) cbHorario).getSelectedItem();
 
     if (proyeccionSeleccionada == null) {
@@ -348,16 +237,28 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
     final double precioUnitario = proyeccionSeleccionada.getPrecio();
     
-    if (miPanelSalas == null) {
-        miPanelSalas = new PanelElegirAsientos();
-    }
+    // 2. Cargar Asientos desde la BD (la lista completa de asientos de la función)
+    AsientoData ad = new AsientoData();
+    List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
     
-    // 2. CONFIGURACIÓN DEL OBSERVADOR
-    miPanelSalas.setObservador((listaSeleccionada) -> {
+    // Lista vacía: Es modo Venta, no hay asientos para anular
+    List<Asiento> asientosParaAnular = new ArrayList<>(); 
+    
+    // 3. Crear el Diálogo (Ventana Pop-up)
+    // Se usa SwingUtilities.getWindowAncestor(this) para obtener la referencia al JFrame padre
+    DialogSeleccionAsientos dialog = new DialogSeleccionAsientos(
+        (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), 
+        asientosBD, 
+        asientosParaAnular, // Lista vacía
+        proyeccionSeleccionada
+    );
 
+    // 4. Conectar el Observador (El Diálogo avisa al Panel Principal de los clics)
+    dialog.setObservador((listaSeleccionada) -> {
+        // Lógica de actualización de JList y Total en el panel principal
         DefaultListModel<String> modelo = new DefaultListModel<>();
         double total = 0;
-
+        
         for (Asiento a : listaSeleccionada) {
             modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
             total += precioUnitario; 
@@ -367,18 +268,13 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         lblTotalAPagar.setText("$ " + String.format("%.2f", total));
     });
 
-    // 3. CARGAR ASIENTOS: Pasamos una lista vacía para el modo 'Nueva Venta'
-    AsientoData ad = new AsientoData();
-    List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
-
-    miPanelSalas.cargarAsientos(asientosBD, new ArrayList<>()); // <<-- SEGUNDO PARÁMETRO VACÍO
+    // 5. Mostrar el Diálogo (Bloquea el hilo hasta que el usuario cierra la ventana)
+    dialog.setVisible(true);
     
-    // 4. Mostrar panel
-    panelContenedor.removeAll();
-    panelContenedor.setLayout(new java.awt.BorderLayout());
-    panelContenedor.add(miPanelSalas, java.awt.BorderLayout.CENTER);
-    panelContenedor.revalidate();
-    panelContenedor.repaint();
+    // Limpieza visual necesaria
+    this.revalidate();
+    this.repaint();
+
     }//GEN-LAST:event_btnSeleccionarAsientosActionPerformed
     private void filtrarCombos() {
         String tituloSeleccionado = (String) cbPelicula.getSelectedItem();
@@ -533,71 +429,65 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
     private void btnBuscarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTicketActionPerformed
         try {
-    
-        int codTicket = Integer.parseInt(jtfCodigoTicket.getText().trim());
 
-      
-        TicketCompraData ticketData = new TicketCompraData();
-        ticketActual = ticketData.buscarTicketPorId(codTicket); 
+            int codTicket = Integer.parseInt(jtfCodigoTicket.getText().trim());
 
-        if (ticketActual == null) {
-            JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " no encontrado o no existe.");
-            limpiarVista(); 
-            return;
+            TicketCompraData ticketData = new TicketCompraData();
+            ticketActual = ticketData.buscarTicketPorId(codTicket);
+
+            if (ticketActual == null) {
+                JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " no encontrado o no existe.");
+                limpiarVista();
+                return;
+            }
+
+            Proyeccion proy = ticketActual.getProyeccion();
+
+            compradorActual = ticketActual.getComprador();
+            jtfDNI.setText(String.valueOf(compradorActual.getDni()));
+            jTextPane1.setText(compradorActual.getNombre());
+
+            cbPelicula.setSelectedItem(proy.getTitulo());
+            cbSala.setSelectedItem("Sala Nro: " + proy.getNroSala());
+
+            ((javax.swing.JComboBox) cbHorario).setSelectedItem(proy);
+
+            AsientoData asientoData = new AsientoData();
+            List<Asiento> asientosCompletos = asientoData.listarAsientosPorProyeccion(proy.getCodProyeccion());
+
+            List<Asiento> asientosVendidos = new ArrayList<>();
+            DefaultListModel<String> modeloLista = new DefaultListModel<>();
+            double totalTicket = 0;
+
+            for (DetalleTicket dt : ticketActual.getDetalles()) {
+                Asiento asientoTicket = dt.getAsiento();
+                asientosVendidos.add(asientoTicket);
+                modeloLista.addElement(asientoTicket.getFila() + "-" + asientoTicket.getNumero() + " ($" + String.format("%.2f", dt.getSubtotal()) + ")");
+                totalTicket += dt.getSubtotal();
+            }
+
+            miPanelSalas.cargarAsientos(asientosCompletos, asientosVendidos);
+
+            jlAsientosSel.setModel(modeloLista);
+            lblTotalAPagar.setText("$" + String.format("%.2f", totalTicket));
+
+            pnlAsientos.removeAll();
+            pnlAsientos.setLayout(new java.awt.BorderLayout());
+            pnlAsientos.add(miPanelSalas, java.awt.BorderLayout.CENTER); // <<-- Nuevo nombre
+
+            pnlAsientos.revalidate();
+            pnlAsientos.repaint();
+
+            this.revalidate();
+            this.repaint();
+            JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " cargado. Puede proceder a la anulación.");
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un código de ticket numérico válido.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al cargar el ticket: " + ex.getMessage());
+            limpiarVista();
         }
-
-        
-        Proyeccion proy = ticketActual.getProyeccion();
-        
- 
-        compradorActual = ticketActual.getComprador();
-        jtfDNI.setText(String.valueOf(compradorActual.getDni()));
-        jTextPane1.setText(compradorActual.getNombre());
-        
-       
-        cbPelicula.setSelectedItem(proy.getTitulo()); 
-        cbSala.setSelectedItem("Sala Nro: " + proy.getNroSala()); 
-        
-      
-        ((javax.swing.JComboBox)cbHorario).setSelectedItem(proy); 
-
-   
-        AsientoData asientoData = new AsientoData();
-        List<Asiento> asientosCompletos = asientoData.listarAsientosPorProyeccion(proy.getCodProyeccion());
-        
-       
-        List<Asiento> asientosVendidos = new ArrayList<>();
-        DefaultListModel<String> modeloLista = new DefaultListModel<>();
-        double totalTicket = 0;
-        
-        for(DetalleTicket dt : ticketActual.getDetalles()) {
-            Asiento asientoTicket = dt.getAsiento();
-            asientosVendidos.add(asientoTicket);
-            modeloLista.addElement(asientoTicket.getFila() + "-" + asientoTicket.getNumero() + " ($" + String.format("%.2f", dt.getSubtotal()) + ")");
-            totalTicket += dt.getSubtotal();
-        }
-        
-    
-        miPanelSalas.cargarAsientos(asientosCompletos, asientosVendidos); 
-        
-      
-        jlAsientosSel.setModel(modeloLista);
-        lblTotalAPagar.setText("$" + String.format("%.2f", totalTicket));
-        
-        panelContenedor.removeAll();
-        panelContenedor.setLayout(new java.awt.BorderLayout());
-        panelContenedor.add(miPanelSalas, java.awt.BorderLayout.CENTER);
-        panelContenedor.revalidate();
-        panelContenedor.repaint();
-        
-        JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " cargado. Puede proceder a la anulación.");
-
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Ingrese un código de ticket numérico válido.");
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error al cargar el ticket: " + ex.getMessage());
-        limpiarVista();
-    }
     }//GEN-LAST:event_btnBuscarTicketActionPerformed
 
     private void btnAnularTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularTicketActionPerformed
@@ -650,7 +540,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbPelicula;
     private javax.swing.JComboBox<String> cbSala;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -667,6 +556,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     private javax.swing.JLabel lblPelicula;
     private javax.swing.JLabel lblSala;
     private javax.swing.JLabel lblTotalAPagar;
-    private javax.swing.JPanel panelContenedor;
+    private javax.swing.JPanel pnlAsientos;
     // End of variables declaration//GEN-END:variables
 }

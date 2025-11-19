@@ -37,60 +37,55 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
         this.observador = observador;
     }
 
-    public void cargarAsientos(List<Asiento> listaAsientos, List<Asiento> asientosParaAnular) {
-        this.removeAll();
-        this.asientosSeleccionados.clear();
+    public void cargarAsientos(List<Asiento> listaAsientos, List<Asiento> asientosParaAnular) { 
+    this.removeAll(); 
+    this.asientosSeleccionados.clear(); 
 
-        // Guardamos la lista de asientos del ticket actual para usarla en la lógica
-        this.asientosTicketActual = (asientosParaAnular != null) ? asientosParaAnular : new ArrayList<>();
-
-        if (listaAsientos == null || listaAsientos.isEmpty()) {
-            this.revalidate();
-            this.repaint();
-            return;
-        }
-
-        // ... (El código de cálculo de GridLayout sigue igual) ...
-        for (Asiento asiento : listaAsientos) {
-            JButton btn = new JButton(asiento.getFila() + "-" + asiento.getNumero());
-
-            // --- LÓGICA DE ESTADOS REVISADA PARA ANULACIÓN ---
-            if (asientosTicketActual.contains(asiento)) {
-                // Caso 1: Pertenece al ticket que estoy gestionando (LO PINTO AZUL y lo HABILITO)
-                btn.setBackground(COLOR_SELECCIONADO);
-                btn.setEnabled(true);
-
-                // También lo marcamos como seleccionado internamente para que aparezca en la JList lateral
-                asientosSeleccionados.add(asiento);
-            } else if (asiento.getEstado() == EstadoAsiento.LIBRE) {
-                // Caso 2: Asiento verdaderamente libre (VERDE)
-                btn.setBackground(COLOR_LIBRE);
-                btn.setEnabled(true);
-            } else {
-                // Caso 3: Ocupado por otro ticket (ROJO)
-                btn.setBackground(COLOR_OCUPADO);
-                btn.setEnabled(false);
-            }
-
-            // El ActionListener debe aplicarse a todos los botones habilitados (Casos 1 y 2)
-            if (btn.isEnabled()) {
-                btn.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        gestionarSeleccion(btn, asiento);
-                    }
-                });
-            }
-
-            this.add(btn);
-        }
-        // ... (revalidate, repaint, etc.) ...
-
-        // Disparar el observador para actualizar la lista lateral y el total al cargar el ticket
-        if (observador != null) {
-            observador.accept(asientosSeleccionados);
-        }
+    if (listaAsientos == null || listaAsientos.isEmpty()) {
+        this.revalidate();
+        this.repaint();
+        return;
     }
+
+    // --- Lógica Defensiva para determinar el GridLayout (Filas x Columnas) ---
+    int maxColumna = 0;
+    for (Asiento a : listaAsientos) {
+        if (a.getNumero() > maxColumna) maxColumna = a.getNumero();
+    }
+    
+    // Protección contra división por cero: si no hay columnas (maxColumna=0), usamos 1 por seguridad.
+    if (maxColumna == 0) maxColumna = 1; 
+    
+    int filas = (int) Math.ceil((double) listaAsientos.size() / maxColumna);
+    
+    // Si hay más asientos que el cálculo, forzamos un GridLayout simple.
+    if (filas == 0) filas = 1;
+
+    this.setLayout(new GridLayout(filas, maxColumna, 5, 5));
+
+    for (Asiento asiento : listaAsientos) {
+        JButton btn = new JButton(asiento.getFila() + "-" + asiento.getNumero());
+        
+        // --- LÓGICA DE ESTADOS ---
+        if (asiento.getEstado() == EstadoAsiento.LIBRE) {
+            btn.setBackground(COLOR_LIBRE);
+            btn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    gestionarSeleccion(btn, asiento);
+                }
+            });
+        } else {
+            btn.setBackground(COLOR_OCUPADO);
+            btn.setEnabled(false); 
+        }
+        
+        this.add(btn);
+    }
+
+    this.revalidate();
+    this.repaint();
+}
 
     private void gestionarSeleccion(JButton btn, Asiento asiento) {
         if (asientosSeleccionados.contains(asiento)) {
