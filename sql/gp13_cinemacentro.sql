@@ -88,18 +88,27 @@ CREATE TABLE `pelicula` (
 --
 
 DROP TABLE IF EXISTS `proyeccion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proyeccion` (
-  `codProyeccion` int(11) NOT NULL,
-  `idioma` varchar(25) NOT NULL,
+  `codProyeccion` int NOT NULL AUTO_INCREMENT,
+  `idioma` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
   `es3D` tinyint(1) NOT NULL,
   `subtitulada` tinyint(1) NOT NULL,
   `horaInicio` time NOT NULL,
   `horaFin` time NOT NULL,
   `precio` double NOT NULL,
-  `titulo` varchar(25) NOT NULL,
-  `director` varchar(25) NOT NULL,
-  `nroSala` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `titulo` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `director` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
+  `nroSala` int unsigned NOT NULL,
+  `fechaProyeccion` date DEFAULT NULL,
+  PRIMARY KEY (`codProyeccion`),
+  KEY `tituloydirector_proyeccion_fk` (`titulo`,`director`),
+  KEY `nroSala_proyeccion_fk` (`nroSala`),
+  CONSTRAINT `nroSala_proyeccion_fk` FOREIGN KEY (`nroSala`) REFERENCES `salas` (`nroSala`),
+  CONSTRAINT `tituloydirector_proyeccion_fk` FOREIGN KEY (`titulo`, `director`) REFERENCES `pelicula` (`titulo`, `director`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 -- --------------------------------------------------------
 
