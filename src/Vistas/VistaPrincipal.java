@@ -51,13 +51,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jmiSalas = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
         jPBody = new javax.swing.JPanel();
         jPInicio = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPCabecera = new javax.swing.JPanel();
         jLCinemacenter = new javax.swing.JLabel();
-        FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -169,53 +168,47 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jPSideBar.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 240, 50));
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPSideBar.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 240, 50));
-
         jPBody.setBackground(java.awt.SystemColor.controlLtHighlight);
         jPBody.setPreferredSize(new java.awt.Dimension(500, 664));
         jPBody.setLayout(new java.awt.CardLayout());
 
         jPInicio.setBackground(java.awt.SystemColor.controlLtHighlight);
 
+        jLabel5.setFont(new java.awt.Font("MingLiU-ExtB", 1, 24)); // NOI18N
+        jLabel5.setForeground(java.awt.SystemColor.activeCaptionText);
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("BIENVENIDOS A CINEMACENTER");
+
+        jLabel4.setForeground(java.awt.SystemColor.controlDkShadow);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("GRACIAS POR ACOMPAÑARNOS");
+
         javax.swing.GroupLayout jPInicioLayout = new javax.swing.GroupLayout(jPInicio);
         jPInicio.setLayout(jPInicioLayout);
         jPInicioLayout.setHorizontalGroup(
             jPInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPInicioLayout.createSequentialGroup()
-                .addGap(283, 283, 283)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPInicioLayout.setVerticalGroup(
             jPInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPInicioLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addGap(232, 232, 232)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         jPBody.add(jPInicio, "card2");
 
+        jPCabecera.setBackground(java.awt.SystemColor.activeCaptionText);
         jPCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLCinemacenter.setFont(new java.awt.Font("MingLiU_MSCS-ExtB", 1, 36)); // NOI18N
         jLCinemacenter.setForeground(new java.awt.Color(255, 255, 255));
         jLCinemacenter.setText("CINEMACENTER");
-        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 240, -1));
-
-        FONDO.setBackground(new java.awt.Color(90, 46, 46));
-        jPCabecera.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 80));
+        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 230, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -226,9 +219,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPBody, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+                    .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,12 +298,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel FONDO;
     private javax.swing.JLabel jLCinemacenter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPBody;
     private javax.swing.JPanel jPCabecera;
     private javax.swing.JPanel jPInicio;
@@ -320,7 +313,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jmiSalas;
     private javax.swing.JLabel lblGestionTickets;
