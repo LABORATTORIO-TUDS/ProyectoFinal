@@ -26,6 +26,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPBody.add(new PanelPeliculas(), "PELICULAS");
         jPBody.add(new VistaProyeccion(), "PROYECCION");
         jPBody.add(new PanelGestionTickets(), "TICKETS");
+        jPBody.add(new VistaSalas(), "SALAS");
         
     }
 
@@ -212,15 +213,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblGestionTicketsMouseClicked
 
     private void jmiSalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiSalasMouseClicked
-    javax.swing.JFrame ventana = new javax.swing.JFrame("Administración de Salas");
-    
-    PanelSalas panel = new PanelSalas();
-    ventana.setContentPane(panel);
-    
-
-    ventana.pack();
-    ventana.setLocationRelativeTo(null);
-    ventana.setVisible(true);
+        cardsito.show(jPBody, "SALAS");
     }//GEN-LAST:event_jmiSalasMouseClicked
 
     /**

@@ -72,6 +72,10 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         btnAnularTicket = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         pnlAsientos = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -79,6 +83,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(400, 300));
         setMinimumSize(new java.awt.Dimension(400, 300));
+        setPreferredSize(new java.awt.Dimension(670, 664));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBuscar.setText("buscar");
@@ -87,7 +92,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 89, -1, -1));
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, 32));
 
         jtfDNI.setText("Ingrese su DNI");
         jtfDNI.addActionListener(new java.awt.event.ActionListener() {
@@ -95,29 +100,32 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 jtfDNIActionPerformed(evt);
             }
         });
-        add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 84, 131, 32));
+        add(jtfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 131, 32));
 
-        lblDNI.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
+        lblDNI.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        lblDNI.setForeground(new java.awt.Color(0, 153, 153));
         lblDNI.setText("DNI");
-        add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 85, -1, 32));
+        add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 32));
 
-        lblGestion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblGestion.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         lblGestion.setText("Gestion de tickets");
-        add(lblGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 33, -1, -1));
+        add(lblGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
-        lblPelicula.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
+        lblPelicula.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblPelicula.setForeground(java.awt.SystemColor.controlShadow);
         lblPelicula.setText("Pelicula");
-        add(lblPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 135, 60, 27));
+        add(lblPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 80, 50));
 
         cbPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 136, 131, -1));
+        add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 131, 30));
 
-        lblSala.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 12)); // NOI18N
+        lblSala.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        lblSala.setForeground(java.awt.SystemColor.controlShadow);
         lblSala.setText("Sala");
-        add(lblSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 135, 58, 27));
+        add(lblSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 50, 50));
 
         cbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 136, 131, -1));
+        add(cbSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 131, 30));
 
         btnSeleccionarAsientos.setText("Seleccionar asientos");
         btnSeleccionarAsientos.addActionListener(new java.awt.event.ActionListener() {
@@ -125,18 +133,20 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnSeleccionarAsientosActionPerformed(evt);
             }
         });
-        add(btnSeleccionarAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 220, -1, -1));
+        add(btnSeleccionarAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
+        lblHorarios.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        lblHorarios.setForeground(java.awt.SystemColor.controlShadow);
         lblHorarios.setText("Horario");
-        add(lblHorarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 180, -1, -1));
+        add(lblHorarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
 
         cbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 180, 131, -1));
+        add(cbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 131, 30));
 
         jTextPane1.setText("Su nombre");
         jScrollPane2.setViewportView(jTextPane1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 84, 201, 32));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 201, 32));
 
         jlAsientosSel.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = {  };
@@ -145,16 +155,17 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jlAsientosSel);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 287, 142, 166));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 142, 166));
 
         lblAsientosSeleccionados.setText("Asientos seleccionados");
-        add(lblAsientosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 265, -1, -1));
+        add(lblAsientosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
 
+        lblMetodoDePago.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         lblMetodoDePago.setText("Metodo de pago");
-        add(lblMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 532, -1, -1));
+        add(lblMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, -1, -1));
 
         cbMetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 529, -1, -1));
+        add(cbMetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 550, -1, 30));
         add(lblTotalAPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 525, 10, 20));
 
         btnConfirmarVenta.setText("Confirmar Venta");
@@ -163,11 +174,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnConfirmarVentaActionPerformed(evt);
             }
         });
-        add(btnConfirmarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 529, -1, -1));
-        add(jtfCodigoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 43, -1, -1));
+        add(btnConfirmarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 120, 50));
+        add(jtfCodigoTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 90, -1));
 
         jLabel1.setText("Codigo Ticket:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 46, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, 20));
 
         btnBuscarTicket.setText("Buscar");
         btnBuscarTicket.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +186,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnBuscarTicketActionPerformed(evt);
             }
         });
-        add(btnBuscarTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 43, -1, -1));
+        add(btnBuscarTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         btnAnularTicket.setText("Anular ticket");
         btnAnularTicket.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +194,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnAnularTicketActionPerformed(evt);
             }
         });
-        add(btnAnularTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 558, -1, -1));
+        add(btnAnularTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 600, 120, 50));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,11 +202,15 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 558, -1, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 600, 120, 50));
 
         pnlAsientos.setBorder(new javax.swing.border.MatteBorder(null));
         pnlAsientos.setLayout(new java.awt.BorderLayout());
-        add(pnlAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 250));
+        add(pnlAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 400, 240));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 650, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 650, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 650, 20));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 513, 650, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDNIActionPerformed
@@ -543,6 +558,10 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JList<String> jlAsientosSel;
