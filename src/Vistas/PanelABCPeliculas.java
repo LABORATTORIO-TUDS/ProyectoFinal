@@ -343,7 +343,7 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
 
     
         if (titulo.isEmpty() || director.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar el Título y el Director para buscar.");
+            JOptionPane.showMessageDialog(this, "Debe ingresar el Titulo y el Director para buscar.");
             return;
         }
 
@@ -378,17 +378,27 @@ public class PanelABCPeliculas extends javax.swing.JPanel {
 
         } else {
             
-            JOptionPane.showMessageDialog(this, "Película no encontrada.");
+            JOptionPane.showMessageDialog(this, "Pelicula no encontrada.");
             
         }
 
     } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error al buscar la película: " + ex.getMessage());
+        JOptionPane.showMessageDialog(this, "Error al buscar la pelicula: " + ex.getMessage());
     }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
+        try {   
+            String titulo = jtfTitulo.getText();
+            String Director = jtfDirector.getText();
+            PeliculaData peliculaData = new PeliculaData();
+            peliculaData.eliminarPelicula(titulo, Director);
+           
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar la pelicula: " + ex.getMessage());
+        }
+        
         
     }//GEN-LAST:event_btnBorrarActionPerformed
 

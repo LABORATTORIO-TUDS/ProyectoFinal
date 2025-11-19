@@ -84,24 +84,27 @@ public class PeliculaData {
 
     
     public void eliminarPelicula(String titulo, String director) {
-        String sql = "DELETE FROM pelicula WHERE titulo = ? AND director = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, titulo);
-            ps.setString(2, director);
-            
-            int filasAfectadas = ps.executeUpdate();
-
-            if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null,"Pelicula '" + titulo + "' eliminada.");
-            } else {
-               JOptionPane.showMessageDialog(null,"No se encontro ninguna película con ese titulo y director.");
-            }
-
-        } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"Error al eliminar la pelicula: " + e.getMessage());
+        
+    String sql = "DELETE FROM pelicula WHERE titulo = ? AND director = ?";
+    
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        
+        ps.setString(1, titulo);
+        ps.setString(2, director);
+        
+        int filas = ps.executeUpdate();
+        
+        if (filas > 0) {
+            JOptionPane.showMessageDialog(null, "Pelicula eliminada.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontro la pelicula.");
         }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar: " + ex.getMessage());
+    }
+        
+        
     }
 
    
