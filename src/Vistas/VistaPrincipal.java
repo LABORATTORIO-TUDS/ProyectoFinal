@@ -45,6 +45,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblGestionTickets = new javax.swing.JLabel();
+        jmiSalas = new javax.swing.JLabel();
         jPBody = new javax.swing.JPanel();
         jPInicio = new javax.swing.JPanel();
         jPCabecera = new javax.swing.JPanel();
@@ -83,6 +84,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jmiSalas.setText("GESTIONAR SALAS");
+        jmiSalas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmiSalasMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
         jPSideBar.setLayout(jPSideBarLayout);
         jPSideBarLayout.setHorizontalGroup(
@@ -98,7 +106,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
-                            .addComponent(lblGestionTickets))
+                            .addComponent(lblGestionTickets)
+                            .addComponent(jmiSalas))
                         .addContainerGap(62, Short.MAX_VALUE))))
             .addGroup(jPSideBarLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
@@ -118,6 +127,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblGestionTickets)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jmiSalas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -200,6 +211,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
         cardsito.show(jPBody, "TICKETS");
     }//GEN-LAST:event_lblGestionTicketsMouseClicked
 
+    private void jmiSalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmiSalasMouseClicked
+    javax.swing.JFrame ventana = new javax.swing.JFrame("Administración de Salas");
+    
+    PanelSalas panel = new PanelSalas();
+    ventana.setContentPane(panel);
+    
+
+    ventana.pack();
+    ventana.setLocationRelativeTo(null);
+    ventana.setVisible(true);
+    }//GEN-LAST:event_jmiSalasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +266,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jmiSalas;
     private javax.swing.JLabel lblGestionTickets;
     // End of variables declaration//GEN-END:variables
 }

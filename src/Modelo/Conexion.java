@@ -6,12 +6,13 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  *
  * @author victor
  */
 public class Conexion {
-       private static Connection c = null;
+    private static Connection c = null;
 
     private static final String URL = "jdbc:mysql://localhost:3306/gp13_cinemacentro";
     private static final String USUARIO = "root";
@@ -42,5 +43,4 @@ public class Conexion {
                   
         }
     }
-    
 }

@@ -4,12 +4,7 @@
  */
 package Modelo;
 
-/**
- *
- * @author elias
- */
 public class Sala {
-    
     private int nroSala;
     private boolean apta3D;
     private int capacidad;
@@ -65,6 +60,7 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala N° " + nroSala;
+        String tipo = apta3D ? "3D" : "2D";
+        return "Sala " + nroSala + " (" + tipo + ") - Cap: " + capacidad;
     }
 }
