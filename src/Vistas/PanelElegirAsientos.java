@@ -47,18 +47,18 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
         return;
     }
 
-    // --- Lógica Defensiva para determinar el GridLayout (Filas x Columnas) ---
+    
     int maxColumna = 0;
     for (Asiento a : listaAsientos) {
         if (a.getNumero() > maxColumna) maxColumna = a.getNumero();
     }
     
-    // Protección contra división por cero: si no hay columnas (maxColumna=0), usamos 1 por seguridad.
+   
     if (maxColumna == 0) maxColumna = 1; 
     
     int filas = (int) Math.ceil((double) listaAsientos.size() / maxColumna);
     
-    // Si hay más asientos que el cálculo, forzamos un GridLayout simple.
+
     if (filas == 0) filas = 1;
 
     this.setLayout(new GridLayout(filas, maxColumna, 5, 5));
@@ -66,7 +66,7 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
     for (Asiento asiento : listaAsientos) {
         JButton btn = new JButton(asiento.getFila() + "-" + asiento.getNumero());
         
-        // --- LÓGICA DE ESTADOS ---
+       
         if (asiento.getEstado() == EstadoAsiento.LIBRE) {
             btn.setBackground(COLOR_LIBRE);
             btn.addActionListener(new ActionListener() {
@@ -89,16 +89,16 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
 
     private void gestionarSeleccion(JButton btn, Asiento asiento) {
         if (asientosSeleccionados.contains(asiento)) {
-            // Deseleccionar: Remover de la lista y volver a LIBRE (verde)
+         
             asientosSeleccionados.remove(asiento);
             btn.setBackground(COLOR_LIBRE);
         } else {
-            // Seleccionar: Agregar a la lista y pintar de SELECCIONADO (azul)
+         
             asientosSeleccionados.add(asiento);
             btn.setBackground(COLOR_SELECCIONADO);
         }
 
-        // Notificar a la vista principal (PanelGestionTickets) para actualizar la JList y el total.
+       
         if (observador != null) {
             observador.accept(asientosSeleccionados);
         }

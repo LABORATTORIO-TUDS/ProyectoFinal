@@ -27,6 +27,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     private PanelElegirAsientos miPanelSalas;
     private Comprador compradorActual = null;
     private TicketCompra ticketActual = null;
+    private List<Asiento> ultimaSeleccionAsientos = new ArrayList<>();
 
     public PanelGestionTickets() {
         initComponents();
@@ -239,56 +240,60 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarAsientosActionPerformed
-       // 1. Reiniciar el estado de Anulación (Siempre iniciamos en modo Nueva Venta aquí)
-    ticketActual = null;
-    
-    // Obtener la Proyeccion seleccionada (usando el cast crudo necesario)
-    Proyeccion proyeccionSeleccionada = (Proyeccion) ((javax.swing.JComboBox) cbHorario).getSelectedItem();
-
-    if (proyeccionSeleccionada == null) {
-        JOptionPane.showMessageDialog(this, "Seleccione una función primero.");
-        return;
-    }
-
-    final double precioUnitario = proyeccionSeleccionada.getPrecio();
-    
-    // 2. Cargar Asientos desde la BD (la lista completa de asientos de la función)
-    AsientoData ad = new AsientoData();
-    List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
-    
-    // Lista vacía: Es modo Venta, no hay asientos para anular
-    List<Asiento> asientosParaAnular = new ArrayList<>(); 
-    
-    // 3. Crear el Diálogo (Ventana Pop-up)
-    // Se usa SwingUtilities.getWindowAncestor(this) para obtener la referencia al JFrame padre
-    DialogSeleccionAsientos dialog = new DialogSeleccionAsientos(
-        (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this), 
-        asientosBD, 
-        asientosParaAnular, // Lista vacía
-        proyeccionSeleccionada
-    );
-
-    // 4. Conectar el Observador (El Diálogo avisa al Panel Principal de los clics)
-    dialog.setObservador((listaSeleccionada) -> {
-        // Lógica de actualización de JList y Total en el panel principal
-        DefaultListModel<String> modelo = new DefaultListModel<>();
-        double total = 0;
         
-        for (Asiento a : listaSeleccionada) {
-            modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
-            total += precioUnitario; 
+        ticketActual = null;
+
+      
+        Proyeccion proyeccionSeleccionada = (Proyeccion) ((javax.swing.JComboBox) cbHorario).getSelectedItem();
+
+        if (proyeccionSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione una función primero.");
+            return;
         }
 
-        jlAsientosSel.setModel(modelo);
-        lblTotalAPagar.setText("$ " + String.format("%.2f", total));
-    });
+        final double precioUnitario = proyeccionSeleccionada.getPrecio();
 
-    // 5. Mostrar el Diálogo (Bloquea el hilo hasta que el usuario cierra la ventana)
-    dialog.setVisible(true);
-    
-    // Limpieza visual necesaria
-    this.revalidate();
-    this.repaint();
+     
+        AsientoData ad = new AsientoData();
+        List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
+
+       
+        List<Asiento> asientosParaAnular = new ArrayList<>();
+
+     
+        DialogSeleccionAsientos dialog = new DialogSeleccionAsientos(
+                (JFrame) javax.swing.SwingUtilities.getWindowAncestor(this),
+                asientosBD,
+                asientosParaAnular, // Lista vacía
+                proyeccionSeleccionada
+        );
+
+       
+        dialog.setObservador((listaSeleccionada) -> {
+           
+            DefaultListModel<String> modelo = new DefaultListModel<>();
+            double total = 0;
+
+            for (Asiento a : listaSeleccionada) {
+                modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
+                total += precioUnitario;
+            }
+
+            jlAsientosSel.setModel(modelo);
+            lblTotalAPagar.setText("$ " + String.format("%.2f", total));
+        });
+
+        dialog.setVisible(true);
+
+
+        ultimaSeleccionAsientos = dialog.getAsientosSeleccionados();
+
+
+        dialog.dispose();
+
+
+        this.revalidate();
+        this.repaint();
 
     }//GEN-LAST:event_btnSeleccionarAsientosActionPerformed
     private void filtrarCombos() {
@@ -398,8 +403,9 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             return;
         }
 
-        List<Asiento> asientosComprados = miPanelSalas.getAsientosSeleccionados();
-        if (asientosComprados.isEmpty()) {
+        List<Asiento> asientosComprados = ultimaSeleccionAsientos;
+
+        if (asientosComprados == null || asientosComprados.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado ningún asiento.");
             return;
         }
