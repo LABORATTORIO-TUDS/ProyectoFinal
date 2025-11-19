@@ -19,35 +19,34 @@ import javax.swing.JFrame;
 public class DialogSeleccionAsientos extends javax.swing.JDialog {
     private PanelElegirAsientos panelAsientos;
 
-    // --- CONSTRUCTOR CORREGIDO ---
+
   public DialogSeleccionAsientos(JFrame parent, List<Asiento> asientosBD, List<Asiento> asientosParaAnular, Proyeccion proyeccion) {
     
     super(parent, "Selección de Asientos - " + proyeccion.getTitulo(), true);
     
-    // 1. LLAMAMOS a initComponents()
+  
     initComponents(); 
 
     try {
         panelAsientos = new PanelElegirAsientos();
         panelAsientos.cargarAsientos(asientosBD, asientosParaAnular);
-        
-        // 2. CONFIGURACIÓN DEL CONTENEDOR FINAL:
+      
         this.getContentPane().setLayout(new BorderLayout()); 
-        this.getContentPane().add(panelAsientos, BorderLayout.CENTER); // Añadimos el contenido
+        this.getContentPane().add(panelAsientos, BorderLayout.CENTER);
         
-        // 3. Configuramos la ventana y forzamos el tamaño MÍNIMO
+ 
         this.setPreferredSize(new Dimension(500, 450)); 
         this.pack(); 
-        this.setMinimumSize(new Dimension(500, 450)); // FUERZA el JDialog a mantener el tamaño
+        this.setMinimumSize(new Dimension(500, 450)); 
         this.setLocationRelativeTo(parent); 
         
     } catch (Exception ex) {
-        // En caso de error, muestra el mensaje y deja el diálogo vacío.
+       
         javax.swing.JOptionPane.showMessageDialog(this, "ERROR AL CARGAR ASIENTOS (Ver consola): " + ex.getMessage(), "Error Crítico", javax.swing.JOptionPane.ERROR_MESSAGE);
         ex.printStackTrace();
     }
 }
-    // --- MÉTODOS DE UTILIDAD ---
+  
     
     public void setObservador(java.util.function.Consumer<List<Asiento>> observador) {
         panelAsientos.setObservador(observador);
