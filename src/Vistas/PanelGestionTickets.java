@@ -25,6 +25,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
      */
     private PanelElegirAsientos miPanelSalas;
     private Comprador compradorActual = null;
+    private TicketCompra ticketActual = null;
 
     public PanelGestionTickets() {
         initComponents();
@@ -66,6 +67,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         cbMetodoDePago = new javax.swing.JComboBox<>();
         lblTotalAPagar = new javax.swing.JLabel();
         btnConfirmarVenta = new javax.swing.JButton();
+        jtfCodigoTicket = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnBuscarTicket = new javax.swing.JButton();
+        btnAnularTicket = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -146,6 +152,29 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Codigo Ticket:");
+
+        btnBuscarTicket.setText("Buscar");
+        btnBuscarTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTicketActionPerformed(evt);
+            }
+        });
+
+        btnAnularTicket.setText("Anular ticket");
+        btnAnularTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnularTicketActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,7 +192,14 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblGestion)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblGestion)
+                                    .addGap(67, 67, 67)
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jtfCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnBuscarTicket))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblDNI)
                                     .addGap(18, 18, 18)
@@ -197,15 +233,30 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                                 .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
                                 .addComponent(lblTotalAPagar)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnConfirmarVenta)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnConfirmarVenta)
+                                .addGap(64, 64, 64)))))
                 .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAnularTicket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCancelar)
+                .addGap(154, 154, 154))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblGestion)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(lblGestion))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnBuscarTicket))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,24 +289,25 @@ public class PanelGestionTickets extends javax.swing.JPanel {
                     .addComponent(cbMetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotalAPagar)
                     .addComponent(btnConfirmarVenta))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAnularTicket)
+                    .addComponent(btnCancelar))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(2, 2, 2)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(2, 2, 2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,11 +323,11 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             compradorActual = compData.buscarCompradorPorDni(dni);
 
             if (compradorActual != null) {
-                
+
                 jTextPane1.setText(compradorActual.getNombre());
                 JOptionPane.showMessageDialog(this, "Comprador encontrado: " + compradorActual.getNombre());
             } else {
-                
+
                 jTextPane1.setText("Comprador no existe");
             }
 
@@ -285,47 +337,48 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarAsientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarAsientosActionPerformed
-        Proyeccion proyeccionSeleccionada = (Proyeccion) ((javax.swing.JComboBox) cbHorario).getSelectedItem();
+        ticketActual = null;
+    
+    Proyeccion proyeccionSeleccionada = (Proyeccion) ((javax.swing.JComboBox) cbHorario).getSelectedItem();
 
-        if (proyeccionSeleccionada == null) {
-            JOptionPane.showMessageDialog(this, "Seleccione una función primero.");
-            return;
+    if (proyeccionSeleccionada == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione una función primero.");
+        return;
+    }
+
+    final double precioUnitario = proyeccionSeleccionada.getPrecio();
+    
+    if (miPanelSalas == null) {
+        miPanelSalas = new PanelElegirAsientos();
+    }
+    
+    // 2. CONFIGURACIÓN DEL OBSERVADOR
+    miPanelSalas.setObservador((listaSeleccionada) -> {
+
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        double total = 0;
+
+        for (Asiento a : listaSeleccionada) {
+            modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
+            total += precioUnitario; 
         }
 
-       
-        final double precioUnitario = proyeccionSeleccionada.getPrecio();
+        jlAsientosSel.setModel(modelo);
+        lblTotalAPagar.setText("$ " + String.format("%.2f", total));
+    });
 
-        
-        if (miPanelSalas == null) {
-            miPanelSalas = new PanelElegirAsientos();
-        }
+    // 3. CARGAR ASIENTOS: Pasamos una lista vacía para el modo 'Nueva Venta'
+    AsientoData ad = new AsientoData();
+    List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
 
-        
-        miPanelSalas.setObservador((listaSeleccionada) -> {
-
-            DefaultListModel<String> modelo = new DefaultListModel<>();
-            double total = 0;
-
-            for (Asiento a : listaSeleccionada) {
-                modelo.addElement("Fila " + a.getFila() + " - Nro " + a.getNumero());
-                total += precioUnitario; // Usa el precio de la Proyección
-            }
-
-            jlAsientosSel.setModel(modelo);
-            lblTotalAPagar.setText("$ " + String.format("%.2f", total));
-        });
-
-        
-        AsientoData ad = new AsientoData();
-        List<Asiento> asientosBD = ad.listarAsientosPorProyeccion(proyeccionSeleccionada.getCodProyeccion());
-
-        miPanelSalas.cargarAsientos(asientosBD);
-
-        panelContenedor.removeAll();
-        panelContenedor.setLayout(new java.awt.BorderLayout());
-        panelContenedor.add(miPanelSalas, java.awt.BorderLayout.CENTER);
-        panelContenedor.revalidate();
-        panelContenedor.repaint();
+    miPanelSalas.cargarAsientos(asientosBD, new ArrayList<>()); // <<-- SEGUNDO PARÁMETRO VACÍO
+    
+    // 4. Mostrar panel
+    panelContenedor.removeAll();
+    panelContenedor.setLayout(new java.awt.BorderLayout());
+    panelContenedor.add(miPanelSalas, java.awt.BorderLayout.CENTER);
+    panelContenedor.revalidate();
+    panelContenedor.repaint();
     }//GEN-LAST:event_btnSeleccionarAsientosActionPerformed
     private void filtrarCombos() {
         String tituloSeleccionado = (String) cbPelicula.getSelectedItem();
@@ -333,23 +386,22 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         int nroSalaSeleccionada = 0;
 
-        
         if (salaString != null && salaString.contains(":")) {
             try {
                 nroSalaSeleccionada = Integer.parseInt(salaString.split(":")[1].trim());
             } catch (NumberFormatException ignored) {
-                
+
             }
         }
 
         ProyeccionData proyData = new ProyeccionData();
-        
+
         List<Proyeccion> proyecciones = proyData.listaProyecciones();
 
         cbHorario.removeAllItems();
 
         for (Proyeccion p : proyecciones) {
-            
+
             boolean coincidePelicula = p.getTitulo().equals(tituloSeleccionado);
             boolean coincideSala = (nroSalaSeleccionada == 0) || (p.getNroSala() == nroSalaSeleccionada);
 
@@ -360,7 +412,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     }
 
     private void cargarDatosIniciales() {
-        
+
         PeliculaData pelData = new PeliculaData();
         List<Pelicula> peliculas = pelData.listarPeliculasEnCartelera();
 
@@ -369,7 +421,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             cbPelicula.addItem(p.getTitulo());
         }
 
-        
         SalaData salaData = new SalaData();
         List<Sala> salas = salaData.listarSalas();
 
@@ -378,7 +429,6 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             cbSala.addItem("Sala Nro: " + s.getNroSala());
         }
 
-       
         cbMetodoDePago.removeAllItems();
         cbMetodoDePago.addItem("Efectivo / Contado");
         cbMetodoDePago.addItem("Débito");
@@ -404,7 +454,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
         for (Proyeccion p : todasProyecciones) {
             if (p.getTitulo().equals(tituloSeleccionado)) {
-                ((javax.swing.JComboBox) cbHorario).addItem(p); 
+                ((javax.swing.JComboBox) cbHorario).addItem(p);
             }
         }
 
@@ -412,17 +462,20 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
     private void limpiarVista() {
         compradorActual = null;
-        jtfDNI.setText("");
-        jTextPane1.setText("Su nombre");
+        ticketActual = null;
 
-        lblTotalAPagar.setText("$ 0.00");
+        jtfDNI.setText("");
+        jTextPane1.setText("Buscador de Comprador");
+        jtfCodigoTicket.setText("");
+        lblTotalAPagar.setText("$0.00");
+
+        cbPelicula.setSelectedIndex(-1);
+        cbSala.setSelectedIndex(-1);
+        cbHorario.setSelectedIndex(-1);
+
         jlAsientosSel.setModel(new DefaultListModel<>());
 
-        panelContenedor.removeAll();
-        panelContenedor.revalidate();
-        panelContenedor.repaint();
-
-        cargarDatosIniciales();
+        miPanelSalas.cargarAsientos(new ArrayList<>(), new ArrayList<>());
     }
     private void btnConfirmarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarVentaActionPerformed
         if (compradorActual == null) {
@@ -478,15 +531,125 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnConfirmarVentaActionPerformed
 
+    private void btnBuscarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTicketActionPerformed
+        try {
+    
+        int codTicket = Integer.parseInt(jtfCodigoTicket.getText().trim());
+
+      
+        TicketCompraData ticketData = new TicketCompraData();
+        ticketActual = ticketData.buscarTicketPorId(codTicket); 
+
+        if (ticketActual == null) {
+            JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " no encontrado o no existe.");
+            limpiarVista(); 
+            return;
+        }
+
+        
+        Proyeccion proy = ticketActual.getProyeccion();
+        
+ 
+        compradorActual = ticketActual.getComprador();
+        jtfDNI.setText(String.valueOf(compradorActual.getDni()));
+        jTextPane1.setText(compradorActual.getNombre());
+        
+       
+        cbPelicula.setSelectedItem(proy.getTitulo()); 
+        cbSala.setSelectedItem("Sala Nro: " + proy.getNroSala()); 
+        
+      
+        ((javax.swing.JComboBox)cbHorario).setSelectedItem(proy); 
+
+   
+        AsientoData asientoData = new AsientoData();
+        List<Asiento> asientosCompletos = asientoData.listarAsientosPorProyeccion(proy.getCodProyeccion());
+        
+       
+        List<Asiento> asientosVendidos = new ArrayList<>();
+        DefaultListModel<String> modeloLista = new DefaultListModel<>();
+        double totalTicket = 0;
+        
+        for(DetalleTicket dt : ticketActual.getDetalles()) {
+            Asiento asientoTicket = dt.getAsiento();
+            asientosVendidos.add(asientoTicket);
+            modeloLista.addElement(asientoTicket.getFila() + "-" + asientoTicket.getNumero() + " ($" + String.format("%.2f", dt.getSubtotal()) + ")");
+            totalTicket += dt.getSubtotal();
+        }
+        
+    
+        miPanelSalas.cargarAsientos(asientosCompletos, asientosVendidos); 
+        
+      
+        jlAsientosSel.setModel(modeloLista);
+        lblTotalAPagar.setText("$" + String.format("%.2f", totalTicket));
+        
+        panelContenedor.removeAll();
+        panelContenedor.setLayout(new java.awt.BorderLayout());
+        panelContenedor.add(miPanelSalas, java.awt.BorderLayout.CENTER);
+        panelContenedor.revalidate();
+        panelContenedor.repaint();
+        
+        JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " cargado. Puede proceder a la anulación.");
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ingrese un código de ticket numérico válido.");
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al cargar el ticket: " + ex.getMessage());
+        limpiarVista();
+    }
+    }//GEN-LAST:event_btnBuscarTicketActionPerformed
+
+    private void btnAnularTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularTicketActionPerformed
+        if (ticketActual == null) {
+            JOptionPane.showMessageDialog(this, "Debe cargar un ticket primero para anularlo.");
+            return;
+        }
+
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Está seguro de anular el Ticket N° " + ticketActual.getCodTicket() + "? Esta acción es irreversible.",
+                "Confirmar Anulación",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+
+            try {
+                TicketCompraData ticketData = new TicketCompraData();
+                AsientoData asientoData = new AsientoData();
+
+                for (DetalleTicket dt : ticketActual.getDetalles()) {
+                    asientoData.actualizarEstadoAsiento(dt.getAsiento().getCodAsiento(), "LIBRE");
+                }
+
+                ticketData.eliminarTicket(ticketActual.getCodTicket());
+
+                JOptionPane.showMessageDialog(this, "Ticket N° " + ticketActual.getCodTicket() + " anulado y asientos liberados.");
+                limpiarVista();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al anular: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnAnularTicketActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarVista();
+        JOptionPane.showMessageDialog(this, "Selección cancelada y vista limpia.");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnularTicket;
     private javax.swing.JToggleButton btnBuscar;
+    private javax.swing.JButton btnBuscarTicket;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmarVenta;
     private javax.swing.JToggleButton btnSeleccionarAsientos;
     private javax.swing.JComboBox<String> cbHorario;
     private javax.swing.JComboBox<String> cbMetodoDePago;
     private javax.swing.JComboBox<String> cbPelicula;
     private javax.swing.JComboBox<String> cbSala;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -494,6 +657,7 @@ public class PanelGestionTickets extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JList<String> jlAsientosSel;
+    private javax.swing.JTextField jtfCodigoTicket;
     private javax.swing.JTextField jtfDNI;
     private javax.swing.JLabel lblAsientosSeleccionados;
     private javax.swing.JLabel lblDNI;

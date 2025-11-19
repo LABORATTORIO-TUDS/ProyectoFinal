@@ -121,4 +121,59 @@ public class TicketCompraData {
         return tickets;
     }
     
+    public TicketCompra buscarTicketPorId(int codTicket) {
+    TicketCompra ticket = null;
+    String sql = "SELECT * FROM ticketcompra WHERE codTicket = ?";
+    
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setInt(1, codTicket);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            ticket = new TicketCompra();
+            ticket.setCodTicket(rs.getInt("codTicket"));
+            ticket.setFechaCompra(rs.getDate("fechaCompra"));
+            ticket.setMontoTotal(rs.getDouble("montoTotal")); 
+            
+            
+            int dniComprador = rs.getInt("dni");
+            int codProyeccion = rs.getInt("codProyeccion");
+            
+            ticket.setComprador(compData.buscarCompradorPorDni(dniComprador));
+            ticket.setProyeccion(proyData.buscarProyeccion(codProyeccion));
+            
+           
+            ticket.setDetalles(detData.buscarDetallesPorTicket(ticket.getCodTicket()));
+            
+        } else {
+            
+        }
+        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar el ticket: " + ex.getMessage());
+    }
+    
+    return ticket;
+}
+    
+    public void eliminarTicket(int codTicket) {
+    String sql = "DELETE FROM ticketcompra WHERE codTicket = ?";
+    
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setInt(1, codTicket);
+        
+        int exito = ps.executeUpdate();
+        
+        if (exito == 1) {
+           
+            JOptionPane.showMessageDialog(null, "El Ticket N° " + codTicket + " ha sido eliminado permanentemente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el Ticket para eliminar.");
+        }
+        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar el ticket: " + ex.getMessage());
+    }
+}
+    
 }

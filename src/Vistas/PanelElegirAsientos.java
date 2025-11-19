@@ -19,8 +19,8 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
 
     private List<Asiento> asientosSeleccionados;
     private Consumer<List<Asiento>> observador;
-    
-    
+    private List<Asiento> asientosTicketActual;
+
     private final Color COLOR_LIBRE = new Color(144, 238, 144); // Verde (Seleccionable)
     private final Color COLOR_OCUPADO = new Color(255, 99, 71); // Rojo (No seleccionable)
     private final Color COLOR_SELECCIONADO = new Color(100, 149, 237); // Azul (Seleccionado por el usuario)
@@ -32,14 +32,17 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
         initComponents();
         this.asientosSeleccionados = new ArrayList<>();
     }
-    
+
     public void setObservador(Consumer<List<Asiento>> observador) {
         this.observador = observador;
     }
-  
-    public void cargarAsientos(List<Asiento> listaAsientos) {
-        this.removeAll(); 
-        this.asientosSeleccionados.clear(); 
+
+    public void cargarAsientos(List<Asiento> listaAsientos, List<Asiento> asientosParaAnular) {
+        this.removeAll();
+        this.asientosSeleccionados.clear();
+
+        // Guardamos la lista de asientos del ticket actual para usarla en la lógica
+        this.asientosTicketActual = (asientosParaAnular != null) ? asientosParaAnular : new ArrayList<>();
 
         if (listaAsientos == null || listaAsientos.isEmpty()) {
             this.revalidate();
@@ -47,40 +50,46 @@ public class PanelElegirAsientos extends javax.swing.JPanel {
             return;
         }
 
-        // --- Lógica para determinar el GridLayout (Filas x Columnas) ---
-        int maxColumna = 0;
-        for (Asiento a : listaAsientos) {
-            if (a.getNumero() > maxColumna) maxColumna = a.getNumero();
-        }
-        int filas = (int) Math.ceil((double) listaAsientos.size() / maxColumna);
-
-        this.setLayout(new GridLayout(filas, maxColumna, 5, 5));
-
+        // ... (El código de cálculo de GridLayout sigue igual) ...
         for (Asiento asiento : listaAsientos) {
             JButton btn = new JButton(asiento.getFila() + "-" + asiento.getNumero());
-            
-            // --- LÓGICA DE ESTADOS CORREGIDA ---
-            if (asiento.getEstado() == EstadoAsiento.LIBRE) {
-                // Si SÍ está LIBRE: Es verde y es seleccionable.
+
+            // --- LÓGICA DE ESTADOS REVISADA PARA ANULACIÓN ---
+            if (asientosTicketActual.contains(asiento)) {
+                // Caso 1: Pertenece al ticket que estoy gestionando (LO PINTO AZUL y lo HABILITO)
+                btn.setBackground(COLOR_SELECCIONADO);
+                btn.setEnabled(true);
+
+                // También lo marcamos como seleccionado internamente para que aparezca en la JList lateral
+                asientosSeleccionados.add(asiento);
+            } else if (asiento.getEstado() == EstadoAsiento.LIBRE) {
+                // Caso 2: Asiento verdaderamente libre (VERDE)
                 btn.setBackground(COLOR_LIBRE);
+                btn.setEnabled(true);
+            } else {
+                // Caso 3: Ocupado por otro ticket (ROJO)
+                btn.setBackground(COLOR_OCUPADO);
+                btn.setEnabled(false);
+            }
+
+            // El ActionListener debe aplicarse a todos los botones habilitados (Casos 1 y 2)
+            if (btn.isEnabled()) {
                 btn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         gestionarSeleccion(btn, asiento);
                     }
                 });
-            } else {
-                // Si NO está LIBRE (es OCUPADO o indefinido): Es rojo y no es seleccionable.
-                btn.setBackground(COLOR_OCUPADO);
-                btn.setEnabled(false); 
             }
-            // ------------------------------------
-            
+
             this.add(btn);
         }
+        // ... (revalidate, repaint, etc.) ...
 
-        this.revalidate();
-        this.repaint();
+        // Disparar el observador para actualizar la lista lateral y el total al cargar el ticket
+        if (observador != null) {
+            observador.accept(asientosSeleccionados);
+        }
     }
 
     private void gestionarSeleccion(JButton btn, Asiento asiento) {
