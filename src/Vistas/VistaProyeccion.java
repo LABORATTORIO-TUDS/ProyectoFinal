@@ -79,13 +79,6 @@ public class VistaProyeccion extends javax.swing.JPanel {
             jCBPeliculas.addItem(peli);
         }
         
-<<<<<<< HEAD
-=======
-        jCBSalas.setModel(modeloSalas);
-        if (!salitas.isEmpty()){
-            jCBSalas.setSelectedIndex(0);                           
-        }
->>>>>>> d015a31c0cbbd2a2c039e146bb11731b85361ec7
     }
     public void cargarTablaProyecciones(){
         String[] columnas = { "Código", "Idioma", "Es 3D", "Subtitulada", 
@@ -112,7 +105,6 @@ public class VistaProyeccion extends javax.swing.JPanel {
         jTabla.setModel(model);             
        }     
     
-<<<<<<< HEAD
        private void eliminarProyeccion(){
            
          try{  
@@ -332,8 +324,6 @@ public class VistaProyeccion extends javax.swing.JPanel {
             jTFCodProyeccion.setText("");
        }
     
-=======
->>>>>>> d015a31c0cbbd2a2c039e146bb11731b85361ec7
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -549,11 +539,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JComboBox<String> jCBIdiomas;
-<<<<<<< HEAD
     private javax.swing.JComboBox<Pelicula> jCBPeliculas;
-=======
-    private javax.swing.JComboBox<String> jCBPeliculas;
->>>>>>> d015a31c0cbbd2a2c039e146bb11731b85361ec7
     private javax.swing.JComboBox<Sala> jCBSalas;
     private javax.swing.JCheckBox jCheckBox_Es3D;
     private javax.swing.JCheckBox jCheckBox_EsSubtitulada;
