@@ -27,6 +27,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPBody.add(new VistaProyeccion(), "PROYECCION");
         jPBody.add(new PanelGestionTickets(), "TICKETS");
         jPBody.add(new VistaSalas(), "SALAS");
+        jPBody.add(new VistaListarAsistencias(), "ASISTENCIAS");
+        jPBody.add(new VistaComprador(), "COMPRADORES");
+
         
     }
 
@@ -51,6 +54,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jmiSalas = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPBody = new javax.swing.JPanel();
         jPInicio = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -168,6 +175,54 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jPSideBar.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 240, 50));
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("COMPRADORES");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel8)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jPSideBar.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, -1));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("ASISTENCIAS");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel6)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jPSideBar.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
         jPBody.setBackground(java.awt.SystemColor.controlLtHighlight);
         jPBody.setPreferredSize(new java.awt.Dimension(500, 664));
         jPBody.setLayout(new java.awt.CardLayout());
@@ -207,8 +262,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jLCinemacenter.setFont(new java.awt.Font("MingLiU_MSCS-ExtB", 1, 36)); // NOI18N
         jLCinemacenter.setForeground(new java.awt.Color(255, 255, 255));
+        jLCinemacenter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLCinemacenter.setText("CINEMACENTER");
-        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 230, -1));
+        jPCabecera.add(jLCinemacenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 660, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -266,6 +322,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
         cardsito.show(jPBody, "SALAS");
     }//GEN-LAST:event_jmiSalasMouseClicked
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        cardsito.show(jPBody, "COMPRADORES");
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+                cardsito.show(jPBody, "ASISTENCIAS");
+
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -304,11 +371,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPBody;
     private javax.swing.JPanel jPCabecera;
     private javax.swing.JPanel jPInicio;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

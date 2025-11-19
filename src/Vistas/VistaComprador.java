@@ -201,8 +201,9 @@ public class VistaComprador extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        this.limpiarCampos();
-            try {
+       // this.limpiarCampos();
+        try {
+            
         int dni = Integer.parseInt(jtfDni.getText());
         String nombre = jtfNombre.getText();
         String pass = new String(jpfPass.getPassword()); // Obtener pass
@@ -214,15 +215,17 @@ public class VistaComprador extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.");
             return;
         }
-
+       
         Comprador nuevo = new Comprador(dni, nombre, fecha, pass, null); // El null es por la lista de tickets
         compData.guardarComprador(nuevo);
         
         limpiarCampos();
         
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Por favor, ingrese un DNI válido.");
-    } catch (Exception e) {
+    } 
+            //catch (NumberFormatException e) {
+       // JOptionPane.showMessageDialog(null, "Por favor, ingrese un DNI válido.");
+   // } 
+        catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al guardar: " + e.getMessage());
     }
     }//GEN-LAST:event_btnAgregarActionPerformed

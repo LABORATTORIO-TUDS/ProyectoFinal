@@ -5,6 +5,7 @@
 package Modelo;
 
 import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
@@ -21,13 +22,14 @@ public class Proyeccion {
     private double precio;
     private String titulo;
     private String director;
+    private Date Fecha;
     private int nroSala;
 
     public Proyeccion() {
 
     }
 
-    public Proyeccion(int codProyeccion, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, double precio, String titulo, String director, int nroSala) {
+    public Proyeccion(int codProyeccion, String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, double precio, String titulo, String director, int nroSala, Date fecha) {
         this.codProyeccion = codProyeccion;
         this.idioma = idioma;
         this.es3D = es3D;
@@ -38,9 +40,11 @@ public class Proyeccion {
         this.titulo = titulo;
         this.director = director;
         this.nroSala = nroSala;
+                this.Fecha = (fecha);
+
     }
 
-    public Proyeccion(String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, double precio, String titulo, String director, int nroSala) {
+    public Proyeccion(String idioma, boolean es3D, boolean subtitulada, LocalTime horaInicio, LocalTime horaFin, double precio, String titulo, String director, int nroSala, Date fecha) {
         this.idioma = idioma;
         this.es3D = es3D;
         this.subtitulada = subtitulada;
@@ -50,6 +54,7 @@ public class Proyeccion {
         this.titulo = titulo;
         this.director = director;
         this.nroSala = nroSala;
+        this.Fecha = fecha;
     }
 
     public int getCodProyeccion() {
@@ -82,6 +87,14 @@ public class Proyeccion {
 
     public void setSubtitulada(boolean subtitulada) {
         this.subtitulada = subtitulada;
+    }
+
+    public Date getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(Date Fecha) {
+        this.Fecha = Fecha;
     }
 
     public LocalTime getHoraInicio() {

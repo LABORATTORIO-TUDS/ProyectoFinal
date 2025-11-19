@@ -228,7 +228,9 @@ public class PanelGestionTickets extends javax.swing.JPanel {
             if (compradorActual != null) {
 
                 jTextPane1.setText(compradorActual.getNombre());
+                 
                 JOptionPane.showMessageDialog(this, "Comprador encontrado: " + compradorActual.getNombre());
+               
             } else {
 
                 jTextPane1.setText("Comprador no existe");
@@ -384,6 +386,8 @@ public class PanelGestionTickets extends javax.swing.JPanel {
         jTextPane1.setText("Buscador de Comprador");
         jtfCodigoTicket.setText("");
         lblTotalAPagar.setText("$0.00");
+        
+    
 
         cbPelicula.setSelectedIndex(-1);
         cbSala.setSelectedIndex(-1);
@@ -501,6 +505,8 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
             this.revalidate();
             this.repaint();
+            btnConfirmarVenta.setEnabled(false);
+                btnSeleccionarAsientos.setEnabled(false);
             JOptionPane.showMessageDialog(this, "Ticket N° " + codTicket + " cargado. Puede proceder a la anulación.");
 
         } catch (NumberFormatException ex) {
@@ -545,6 +551,8 @@ public class PanelGestionTickets extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limpiarVista();
+            btnSeleccionarAsientos.setEnabled(true);
+        btnConfirmarVenta.setEnabled(true);
         JOptionPane.showMessageDialog(this, "Selección cancelada y vista limpia.");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
