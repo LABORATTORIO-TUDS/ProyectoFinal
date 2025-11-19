@@ -1,122 +1,212 @@
-
 package Vistas;
 
-/**
- *
- * @author Victor
- */
-import Modelo.Asiento;
-import Modelo.EstadoAsiento;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JButton;
-import java.util.function.Consumer;
+import Modelo.Sala;
+import Persistencia.SalaData;
+import javax.swing.JOptionPane;
 
 public class PanelSalas extends javax.swing.JPanel {
-    
-    private List<Asiento> asientosSeleccionados;
-    private Consumer<List<Asiento>> observador;
-    
-    
-    private final Color COLOR_LIBRE = new Color(144, 238, 144); // Verde
-    private final Color COLOR_OCUPADO = new Color(255, 99, 71); // Rojo
-    private final Color COLOR_SELECCIONADO = new Color(100, 149, 237); // Azul
 
-    /**
-     * Creates new form PanelSalas
-     */
+    private SalaData salaData;
+
     public PanelSalas() {
         initComponents();
-        this.asientosSeleccionados = new ArrayList<>();
+        salaData = new SalaData(); 
     }
-    public void setObservador(Consumer<List<Asiento>> observador) {
-        this.observador = observador;
-    }
-  
-    public void cargarAsientos(List<Asiento> listaAsientos) {
-        this.removeAll(); 
-        this.asientosSeleccionados.clear(); 
 
-        if (listaAsientos == null || listaAsientos.isEmpty()) {
-            this.revalidate();
-            this.repaint();
-            return;
-        }
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        try {
+            int capacidad = Integer.parseInt(txtCapacidad.getText());
+            boolean es3D = chkApta3D.isSelected();
+            String estado = (String) cboEstado.getSelectedItem();
 
-        int maxColumna = 0;
-        for (Asiento a : listaAsientos) {
-            if (a.getNumero() > maxColumna) maxColumna = a.getNumero();
-        }
-        int filas = (int) Math.ceil((double) listaAsientos.size() / maxColumna);
-
-        this.setLayout(new GridLayout(filas, maxColumna, 5, 5));
-
-        for (Asiento asiento : listaAsientos) {
-            JButton btn = new JButton(asiento.getFila() + "-" + asiento.getNumero());
+            Sala sala = new Sala(es3D, capacidad, estado);
+            salaData.guardarSala(sala);
+            limpiarCampos();
             
-            if (asiento.getEstado() == EstadoAsiento.OCUPADO) {
-                btn.setBackground(COLOR_OCUPADO);
-                btn.setEnabled(false); // No se puede clicar
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La capacidad debe ser un número entero.");
+        }
+    }                                          
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        try {
+            int nroSala = Integer.parseInt(txtNumeroSala.getText());
+            Sala sala = salaData.buscarSala(nroSala);
+
+            if (sala != null) {
+                txtCapacidad.setText(String.valueOf(sala.getCapacidad()));
+                chkApta3D.setSelected(sala.isApta3D());
+                cboEstado.setSelectedItem(sala.getEstado());
             } else {
-                btn.setBackground(COLOR_LIBRE);
-                btn.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        gestionarSeleccion(btn, asiento);
-                    }
-                });
+                String idBuscado = txtNumeroSala.getText();
+                limpiarCampos();
+                txtNumeroSala.setText(idBuscado);
             }
-            this.add(btn);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número de sala válido.");
         }
+    }                                         
 
-        this.revalidate();
-        this.repaint();
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        try {
+            int nroSala = Integer.parseInt(txtNumeroSala.getText());
+            int capacidad = Integer.parseInt(txtCapacidad.getText());
+            boolean es3D = chkApta3D.isSelected();
+            String estado = (String) cboEstado.getSelectedItem();
+
+            Sala sala = new Sala(nroSala, es3D, capacidad, estado);
+            salaData.modificarSala(sala);
+            limpiarCampos();
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Verifique los datos numéricos.");
+        }
+    }                                            
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        try {
+            int nroSala = Integer.parseInt(txtNumeroSala.getText());
+            int confirmacion = JOptionPane.showConfirmDialog(this, 
+                    "¿Está seguro de eliminar la Sala " + nroSala + "?", 
+                    "Confirmar Borrado", 
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                salaData.eliminarSala(nroSala);
+                limpiarCampos();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número de sala válido.");
+        }
+    }                                           
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        limpiarCampos();
+    }                                          
+
+    private void limpiarCampos() {
+        txtNumeroSala.setText("");
+        txtCapacidad.setText("");
+        chkApta3D.setSelected(false);
+        cboEstado.setSelectedIndex(0);
     }
 
-    private void gestionarSeleccion(JButton btn, Asiento asiento) {
-        if (asientosSeleccionados.contains(asiento)) {
-            asientosSeleccionados.remove(asiento);
-            btn.setBackground(COLOR_LIBRE);
-        } else {
-            asientosSeleccionados.add(asiento);
-            btn.setBackground(COLOR_SELECCIONADO);
-        }
-
-        if (observador != null) {
-            observador.accept(asientosSeleccionados);
-        }
-    }
-
-    public List<Asiento> getAsientosSeleccionados() {
-        return asientosSeleccionados;
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+
+        txtNumeroSala = new javax.swing.JTextField();
+        txtCapacidad = new javax.swing.JTextField();
+        chkApta3D = new javax.swing.JCheckBox();
+        cboEstado = new javax.swing.JComboBox<>();
+        btnGuardar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        
+        txtCapacidad.setText(""); 
+        chkApta3D.setText("Apta para 3D");
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIBRE", "OCUPADO" }));
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkApta3D)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNumeroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(btnLimpiar)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(txtNumeroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(chkApta3D)
+                .addGap(18, 18, 18)
+                .addComponent(cboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnLimpiar))
+                .addGap(42, 42, 42))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cboEstado;
+    private javax.swing.JCheckBox chkApta3D;
+    private javax.swing.JTextField txtCapacidad;
+    private javax.swing.JTextField txtNumeroSala;
+    // End of variables declaration                   
 }

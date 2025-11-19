@@ -39,17 +39,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
         if (!salitas.isEmpty()){
             jCBSalas.setSelectedIndex(0);                           
         }
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -100,7 +90,6 @@ public class VistaProyeccion extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 340, -1));
 
         jCBSalas.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        jCBSalas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(jCBSalas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 220, -1));
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -226,7 +215,7 @@ public class VistaProyeccion extends javax.swing.JPanel {
     private javax.swing.JButton jBModificar;
     private javax.swing.JComboBox<String> jCBIdiomas;
     private javax.swing.JComboBox<String> jCBPeliculas;
-    private javax.swing.JComboBox<String> jCBSalas;
+    private javax.swing.JComboBox<Sala> jCBSalas;
     private javax.swing.JCheckBox jCheckBox_Es3D;
     private javax.swing.JCheckBox jCheckBox_EsSubtitulada;
     private javax.swing.JLabel jLabel1;
